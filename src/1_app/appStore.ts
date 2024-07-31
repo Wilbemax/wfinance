@@ -1,4 +1,5 @@
 import { configureStore } from '@reduxjs/toolkit/react'
+
 import { rootReducers } from './rootReducers'
 
 export const store = configureStore({

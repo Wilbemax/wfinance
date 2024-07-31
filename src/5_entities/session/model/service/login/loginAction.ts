@@ -5,7 +5,7 @@ import { LoginPayloadI, LoginRejectI, LoginResponseI } from './type'
 
 import AuthenticationService from '@/5_entities/session/api/AuthenticationService'
 
-export const login = createAsyncThunk<
+export const Login = createAsyncThunk<
   LoginResponseI,
   LoginPayloadI,
   { rejectValue: LoginRejectI }

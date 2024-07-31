@@ -1,5 +1,5 @@
 export interface SwitchPasswordInitialState {
-  status: number | undefined | null
+  status: number | undefined
   activationLink: string
   steps: {
     step1: boolean
