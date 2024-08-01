@@ -16,7 +16,7 @@ export const sessionSlice = createSlice({
   name: 'session',
   initialState,
   reducers: {
-    logOut: (state: sessionInitialState) => {
+    logOut: (state) => {
       state.refreshToken = undefined
       cookies.remove('refreshToken')
     },

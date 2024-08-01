@@ -1,18 +1,20 @@
 import { createAsyncThunk } from '@reduxjs/toolkit'
 import axios from 'axios'
 
-import { fetchUser, fetchUserReject } from './type'
+import { fetchUserReject, fetchUserT } from './type'
+import { API_URL } from '@/6_shared/api/config'
 
-debugger
-const api = process.env.API_URL
 
-export const fetchAuth = createAsyncThunk<
-  fetchUser,
+const api = API_URL
+
+export const fetchUser = createAsyncThunk<
+  fetchUserT,
   void,
   { rejectValue: fetchUserReject }
 >('auth/fetch', async (_, { rejectWithValue }) => {
+  // debugger
   try {
-    const response = await axios.get<fetchUser>(`${api}/refresh`, {
+    const response = await axios.get<fetchUserT>(`${api}/refresh`, {
       withCredentials: true,
     })
     localStorage.setItem('token', response.data.accessToken)

@@ -1,5 +1,5 @@
 export type sessionInitialState = {
-  refreshToken: string | undefined
+  refreshToken?: string | undefined
   loading: boolean
   sessionError: RejectSession | null
 }

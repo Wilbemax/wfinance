@@ -145,12 +145,7 @@
         "html": true
       }
     ],
-    "react/jsx-tag-spacing": [
-      "error",
-      {
-        "beforeSelfClosing": "always"
-      }
-    ]
+   
   },
   "settings": {
     "react": {
