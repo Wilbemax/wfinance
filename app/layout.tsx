@@ -1,9 +1,12 @@
 import { Inter } from 'next/font/google'
-import './globals.css'
+
 import { AppProvider } from '@/1_app/AppProvider'
+
+import './globals.css'
 
 const inter = Inter({ subsets: ['latin'] })
 
+// eslint-disable-next-line react/function-component-definition
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -11,9 +14,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang='en'>
-      <AppProvider>
-        <body className={inter.className}>{children}</body>
-      </AppProvider>
+      <body className={inter.className}>
+        <AppProvider>{children}</AppProvider>
+      </body>
     </html>
   )
 }

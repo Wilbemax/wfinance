@@ -1,34 +1,50 @@
 'use client'
-import { useRouter } from 'next/navigation'
-// это ультилита предназначена для перенаправления пользователя, с защищенных роутов на страницу, разрешенную им
 
 import { useEffect } from 'react'
+import { useDispatch } from 'react-redux'
+import { useRouter } from 'next/navigation'
 import Cookies from 'universal-cookie'
+
+import { setLoading } from '@/5_entities/app/model/slice'
+
 import { useFetchUser } from '../hooks/useFetchUser'
 
 const withAuth = (WrappedComponent: React.ComponentType) => {
   const ComponentWithAuth: React.FC = (props) => {
+    const dispatch = useDispatch()
     const cookies = new Cookies()
     const fetchUser = useFetchUser()
     const token = cookies.get('refreshToken')
     const router = useRouter()
+
     useEffect(() => {
-      if (!token) {
-        router.push('/welcome')
-        return
-      }
-      fetchUser()
-      if (typeof fetchUser === 'number') {
-        router.push('/welcome')
+      const checkAuth = async () => {
+        if (!token) {
+          dispatch(setLoading())
+          router.push('/welcome')
+          return
+        }
+
+        try {
+          await fetchUser()
+        } catch (error) {
+          dispatch(setLoading())
+          router.push('/welcome')
+        }
       }
 
+       checkAuth()
+    }, [token, dispatch, router, fetchUser])
 
-    }, [token])
     if (!token) {
-      return <>Loading...</>
+      dispatch(setLoading())
+      return null
     }
+
     return <WrappedComponent {...props} />
   }
+
   return ComponentWithAuth
 }
+
 export default withAuth

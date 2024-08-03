@@ -1,16 +1,21 @@
 'use client'
-import React, { ReactNode } from 'react'
-import { Provider } from 'react-redux'
 
-import { store } from './appStore'
+import type { ReactNode } from 'react'
+import React from 'react'
+import { Provider } from 'react-redux'
 
 import ThemeProvider from '@/5_entities/theme/lib/ThemeProvider'
 
-type providerChildrenProps = {
+import { store } from './appStore'
+import { LoadingProvider } from './LoadingProvider'
+
+type ProviderChildrenProps = {
   children: ReactNode
 }
-export const AppProvider = ({ children }: providerChildrenProps) => (
+export const AppProvider = ({ children }: ProviderChildrenProps) => (
   <Provider store={store}>
-      <ThemeProvider>{children}</ThemeProvider>
+    <ThemeProvider>
+      <LoadingProvider>{children}</LoadingProvider>
+    </ThemeProvider>
   </Provider>
 )

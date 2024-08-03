@@ -24,9 +24,12 @@ export default function ThemeProvider({ children, theme }: ThemeProviderProps) {
   const dispatch = useAppDispatch()
 
   useEffect(() => {
-    if (theme && theme !== currentTheme) {
-      dispatch(changeTheme(theme))
-      return
+
+    if (typeof window !== 'undefined') {
+      if (theme && theme !== currentTheme) {
+        dispatch(changeTheme(theme))
+        return
+      }
     }
     document.documentElement.setAttribute('data-theme', currentTheme)
   }, [currentTheme, dispatch, theme])
