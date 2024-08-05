@@ -1,0 +1,25 @@
+.wrapper{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
+}
+
+
+.introduction{
+  width: 90vw;
+  height: 50vh;
+  margin: 0 auto;
+  padding-top: 4rem;
+  flex-direction: column;
+  font-family: inherit;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.text{
+  text-align: center;
+  font-weight: 500;
+  margin-bottom: 1.5rem;
+}
+

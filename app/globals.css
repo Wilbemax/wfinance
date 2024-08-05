@@ -1,8 +1,17 @@
 body {
   background: #fff;
+  width: 100svw;
+  height: 100svh;
 }
 
+img {
+  pointer-events: none;
+}
 
+.container {
+  width: 92%;
+  margin: 0 auto;
+}
 
 [data-theme='dark'] body {
   background: #23272e;

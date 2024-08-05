@@ -1,6 +1,8 @@
-import { type PayloadAction, createSlice } from '@reduxjs/toolkit'
-import { ThemeType } from './type'
-import { RootState } from '@/1_app/appStore'
+import { createSlice, type PayloadAction } from '@reduxjs/toolkit'
+
+import type { RootState } from '@/1_app/appStore'
+
+import type { ThemeType } from './type'
 
 interface ThemeSliceInitialState {
   currentTheme: 'light' | 'dark'
@@ -18,6 +20,7 @@ const getInitialTheme = (): 'light' | 'dark' => {
 const initialState: ThemeSliceInitialState = {
   currentTheme: getInitialTheme(),
 }
+
 export const themeSlice = createSlice({
   name: 'theme',
   initialState,

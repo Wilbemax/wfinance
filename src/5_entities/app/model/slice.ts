@@ -14,6 +14,9 @@ export const appConditionsSlice = createSlice({
     setLoading: (state) => {
       state.loadingPage = true
     },
+    removeLoading: (state) => {
+      state.loadingPage = false
+    },
   },
   // заготовка на будущее
   // extraReducers: (builder) => {
@@ -21,5 +24,5 @@ export const appConditionsSlice = createSlice({
   // },
 })
 
-export const { setLoading } = appConditionsSlice.actions
+export const { setLoading, removeLoading } = appConditionsSlice.actions
 export default appConditionsSlice.reducer
