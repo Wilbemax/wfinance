@@ -1,3 +1,4 @@
+import cx from 'classnames'
 import { Inter } from 'next/font/google'
 
 import { AppProvider } from '@/1_app/AppProvider'
@@ -15,7 +16,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang='en'>
-      <body className={inter.className}>
+      <body className={cx(inter.className)}>
         <AppProvider>{children}</AppProvider>
       </body>
     </html>
