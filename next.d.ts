@@ -1,7 +1,7 @@
 import type {
   NextComponentType,
-  NextPageContext,
   NextLayoutComponentType,
+  NextPageContext,
 } from 'next'
 import type { AppProps } from 'next/app'
 
@@ -19,4 +19,8 @@ declare module 'next/app' {
   type AppLayoutProps<> = AppProps & {
     Component: NextLayoutComponentType
   }
+}
+declare module '*.tgs' {
+  const value: string
+  export default value
 }
