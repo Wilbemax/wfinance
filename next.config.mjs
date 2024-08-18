@@ -1,3 +1,5 @@
+import path from 'path'
+
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   webpack: (config, { isServer }) => {
@@ -9,6 +11,10 @@ const nextConfig = {
           loader: 'file-loader',
           options: {
             name: '[path][name].[ext]',
+            publicPath: '/_next',
+            outputPath: 'static/chunks/',
+            context: path.resolve(process.cwd(), 'src'),
+            emitFile: !isServer,
           },
         },
       ],
