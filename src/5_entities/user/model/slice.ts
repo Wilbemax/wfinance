@@ -1,8 +1,11 @@
+import type { PayloadAction } from '@reduxjs/toolkit'
 import { createSlice } from '@reduxjs/toolkit'
 import Cookies from 'universal-cookie'
 
+import type { AuthResponse } from '@/6_shared/api/type'
+
 import fetchUserExtraReducer from './service/fetchUser/fetchUserExtraReducer'
-import { userInitialState } from './type'
+import type { userInitialState } from './type'
 
 const cookies = new Cookies()
 
@@ -12,7 +15,7 @@ if (typeof window !== 'undefined') {
 }
 
 const initialState: userInitialState = {
-  refreshToke: cookies.get('refreshToken'),
+  refreshToke: cookies.get<string>('refreshToken'),
   accessToken,
   userLoading: false,
   user: null,
@@ -21,12 +24,15 @@ const initialState: userInitialState = {
 export const userSlice = createSlice({
   name: 'user',
   initialState,
-  reducers: {},
+  reducers: {
+    setUser: (state, action: PayloadAction<AuthResponse>) => {
+      state.user = action.payload.user
+    },
+  },
   extraReducers(builder) {
     fetchUserExtraReducer(builder)
   },
 })
 
+export const { setUser } = userSlice.actions
 export default userSlice.reducer
-
-//дописать функционал автоматического входа пользователя, перейти к реализации клиентской части

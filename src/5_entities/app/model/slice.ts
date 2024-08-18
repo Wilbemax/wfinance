@@ -12,10 +12,13 @@ export const appConditionsSlice = createSlice({
   initialState,
   reducers: {
     setLoading: (state) => {
+      // debugger
       state.loadingPage = true
+      console.log('set loading')
     },
     removeLoading: (state) => {
       state.loadingPage = false
+      console.log('remove loading')
     },
   },
   // заготовка на будущее
