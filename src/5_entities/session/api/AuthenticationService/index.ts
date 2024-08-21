@@ -1,11 +1,11 @@
-import { AxiosResponse } from 'axios'
+import type { AxiosResponse } from 'axios'
+
+import $api from '@/6_shared/api/index'
+import type { AuthResponse } from '@/6_shared/api/type'
 
 import PasswordService from '../PasswordSession'
 
-import { AuthPayload } from './type'
-
-import $api from '@/6_shared/api/index'
-import { AuthResponse } from '@/6_shared/api/type'
+import type { AuthPayload } from './type'
 
 export default class AuthenticationService {
   static async registration(

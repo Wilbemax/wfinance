@@ -83,7 +83,7 @@ const ButtonForSignIn: React.FC<SubmitButtonProps> = ({ form, data }) => {
         Ошибка регистрации
       </Button>
     )
-  } else { 
+  } else {
     buttonContent = (
       <Button
         style={{ width: '100%' }}

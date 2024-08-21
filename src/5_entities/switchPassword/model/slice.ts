@@ -3,7 +3,7 @@ import { createSlice } from '@reduxjs/toolkit'
 import checkCodeExtraReducer from './service/checkCode/checkCodeExtraReducer'
 import checkEmailExtraReducer from './service/checkEmail/checkEmailExtraReducer'
 import switchPasswordExtraReducer from './service/switchPassword/switchPasswordExtraReducer'
-import { SwitchPasswordInitialState } from './type'
+import type { SwitchPasswordInitialState } from './type'
 
 const initialState: SwitchPasswordInitialState = {
   status: undefined,

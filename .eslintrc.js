@@ -35,6 +35,7 @@ module.exports = {
     'react/button-has-type': 'warn',
     'react/no-array-index-key': 'warn',
     'react-hooks/exhaustive-deps': 'warn',
+
     'react/function-component-definition': [
       'error',
       {
@@ -92,6 +93,7 @@ module.exports = {
         'import/no-extraneous-dependencies': 'off',
         '@typescript-eslint/no-explicit-any': 'off',
         '@typescript-eslint/no-unsafe-return': 'off',
+        '@typescript-eslint/no-misused-promises': 'off',
         '@typescript-eslint/ban-ts-comment': 'off',
         '@typescript-eslint/no-shadow': 'off',
         '@typescript-eslint/restrict-template-expressions': [

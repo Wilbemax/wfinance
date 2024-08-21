@@ -1,0 +1,14 @@
+.input {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  flex-grow: 1;
+  margin-top: 1rem;
+  overflow: hidden;
+}
+
+.button {
+  display: flex;
+  justify-content: flex-end;
+  padding: 5rem 0;
+}

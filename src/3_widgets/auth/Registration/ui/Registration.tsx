@@ -44,7 +44,7 @@ const FormWidget = () => {
     const { value } = event.target
 
     setPassword(value)
- 
+
     if (
       !/^[a-zA-Z0-9]+$/.test(value) ||
       value.length < 8 ||

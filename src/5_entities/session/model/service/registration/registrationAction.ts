@@ -1,9 +1,10 @@
 import { createAsyncThunk } from '@reduxjs/toolkit'
 import axios from 'axios'
 
-import { AuthPayload, ErrorResponse } from './type'
-
 import AuthenticationService from '@/5_entities/session/api/AuthenticationService'
+import { setUser } from '@/5_entities/user/model/slice'
+
+import type { AuthPayload, ErrorResponse } from './type'
 
 export const registration = createAsyncThunk<
   { accessToken: string },
@@ -13,7 +14,7 @@ export const registration = createAsyncThunk<
   try {
     const response = await AuthenticationService.registration(userData)
     localStorage.setItem('token', response.data.accessToken)
-    // thunkAPI.dispatch(setUser(response))
+    thunkAPI.dispatch(setUser(response.data))
 
     return response.data
   } catch (e) {
@@ -30,6 +31,7 @@ export const registration = createAsyncThunk<
           errorMessage.message = match[1].trim()
         }
       } else if (e.response?.data?.message) {
+        // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
         errorMessage.message = e.response.data.message
       }
 

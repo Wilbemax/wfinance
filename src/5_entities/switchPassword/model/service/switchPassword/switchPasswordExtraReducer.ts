@@ -1,9 +1,9 @@
-import { ActionReducerMapBuilder, PayloadAction } from '@reduxjs/toolkit'
+import type { ActionReducerMapBuilder, PayloadAction } from '@reduxjs/toolkit'
 
-import { SwitchPasswordInitialState } from '../../type'
+import type { SwitchPasswordInitialState } from '../../type'
 
 import { ThirdStep } from './switchPasswordAction'
-import { SwitchRejectT } from './type'
+import type { SwitchRejectT } from './type'
 
 export default function switchPasswordExtraReducer(
   builder: ActionReducerMapBuilder<SwitchPasswordInitialState>

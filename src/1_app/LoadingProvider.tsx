@@ -12,19 +12,15 @@ type LoadingChildrenProps = {
 export const LoadingProvider = ({ children }: LoadingChildrenProps) => {
   const { loadingPage } = useAppState()
 
-  const [showLoading, setShowLoading] = useState<boolean>(false)
+  const [isLoading, setIsLoading] = useState<boolean>(loadingPage)
 
   useEffect(() => {
-    if (loadingPage) {
-      setShowLoading(true)
-    } else {
-      setShowLoading(false)
-    }
+    setIsLoading(loadingPage)
   }, [loadingPage])
 
   return (
     <>
-      {showLoading && <LoadingPage />}
+      {isLoading && <LoadingPage />}
       {children}
     </>
   )

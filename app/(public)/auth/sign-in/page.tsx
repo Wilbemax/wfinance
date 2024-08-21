@@ -1,7 +1,7 @@
-const SignIn = () => {
-  console.log('server')
+import SignInPage from '@/2_page/auth/SignInPage'
 
-  return <div>page</div>
+const SignIn = () => {
+  return <SignInPage />
 }
 
 export default SignIn

@@ -42,7 +42,7 @@ const LoginForm = ({ form, func, data }: Props) => {
         <Input.Password
           size='large'
           prefix={<LockOutlined className='site-form-item-icon' />}
-          placeholder='Пароль' 
+          placeholder='Пароль'
           onChange={(e) => func.setPassword(e.target.value)}
         />
       </Form.Item>
