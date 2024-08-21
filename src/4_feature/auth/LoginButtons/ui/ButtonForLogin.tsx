@@ -68,7 +68,7 @@ const ButtonForLogin: React.FC<SubmitButtonProps> = ({ form, data }) => {
   // useEffect(() => {
   //   button = document?.getElementById('button')
   // }, [])
-  
+
   const button: HTMLElement | null = document?.getElementById('button')
   if (sessionError) {
     addShakeOnButton(button)
