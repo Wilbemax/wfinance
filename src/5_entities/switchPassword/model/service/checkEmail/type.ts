@@ -1,7 +1,7 @@
-export interface checkEmailPayloadI {
+export interface CheckEmailPayloadI {
   email: string
 }
 
-export type checkEmailResponseT = string
+export type CheckEmailResponseT = string
 
-export type checkEmailRejectT = number
+export type CheckEmailRejectT = number

@@ -1,0 +1,17 @@
+.button{
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  margin: 1rem 0;
+  & p {
+      text-align: end;
+      padding-top: .5rem;
+
+      & a{
+          padding-top: .5rem;
+      }
+  }
+  & button {
+      width: 100%;
+  }
+}

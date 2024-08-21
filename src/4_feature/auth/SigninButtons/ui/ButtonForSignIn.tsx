@@ -50,7 +50,16 @@ const ButtonForSignIn: React.FC<SubmitButtonProps> = ({ form, data }) => {
     return () => clearTimeout(timeOut)
   }, [dispatch, sessionError])
 
-  const button = document.getElementById('button')
+  // нужно сделать так, но при жтом варианте когда обновляешь странцу импуты перестают быть черными
+
+  // useEffect(() => {
+  //   if (typeof window !== 'undefined' && sessionError) {
+  //     const button = document.getElementById('button')
+  //     addShakeOnButton(button)
+  //   }
+  // }, [sessionError])
+
+  const button: HTMLElement | null = document?.getElementById('button')
   if (sessionError) {
     addShakeOnButton(button)
   }
@@ -88,8 +97,11 @@ const ButtonForSignIn: React.FC<SubmitButtonProps> = ({ form, data }) => {
     )
   }
 
-  return (<div id='button' style={{ width: '100%' }}>
-    {buttonContent}</div>)
+  return (
+    <div id='button' style={{ width: '100%' }}>
+      {buttonContent}
+    </div>
+  )
 }
 
 export { ButtonForSignIn }

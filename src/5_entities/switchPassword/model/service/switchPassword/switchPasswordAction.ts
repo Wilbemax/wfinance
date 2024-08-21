@@ -1,9 +1,9 @@
 import { createAsyncThunk } from '@reduxjs/toolkit'
 import axios from 'axios'
 
-import { SwitchPayloadI, SwitchRejectT, SwitchResponseT } from './type'
-
 import PasswordRecoveryService from '@/5_entities/switchPassword/api/PasswordRecoveryService'
+
+import type { SwitchPayloadI, SwitchRejectT, SwitchResponseT } from './type'
 
 export const ThirdStep = createAsyncThunk<
   SwitchResponseT,

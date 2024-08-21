@@ -67,10 +67,10 @@ const FormWidget = () => {
       value={data}
       emailOptions={emailOptions}
       func={{
-        onEmailChange,
         setEmail,
-        setUserName,
         setPhone,
+        setUserName,
+        onEmailChange,
         handlePasswordChange,
       }}
     />

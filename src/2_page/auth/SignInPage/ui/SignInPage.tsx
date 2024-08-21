@@ -5,7 +5,6 @@ import { useDispatch } from 'react-redux'
 import { Typography } from 'antd'
 
 import { FormWidget } from '@/3_widgets/auth/Registration'
-import { SignInForm } from '@/4_feature/auth/SignInForm/ui/SignInForm'
 import { removeLoading } from '@/5_entities/app/model/slice'
 import { Container } from '@/6_shared/ui/continer'
 
@@ -13,7 +12,7 @@ const SignInPage = () => {
   const dispatch = useDispatch()
 
   useEffect(() => {
-    dispatch(removeLoading()) // Снятие состояния загрузки после загрузки страницы
+    dispatch(removeLoading())
   }, [dispatch])
 
   return (

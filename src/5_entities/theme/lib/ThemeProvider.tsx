@@ -22,10 +22,16 @@ const ThemeProvider = ({ children, themes }: ThemeProviderProps) => {
 
   useLayoutEffect(() => {
     if (typeof window !== 'undefined') {
-      if (themes && themes !== currentTheme) {
+      const storedTheme = localStorage.getItem('theme') as ThemeType
+
+      if (storedTheme && storedTheme !== currentTheme) {
+        dispatch(changeTheme(storedTheme))
+      } else if (themes && themes !== currentTheme) {
         dispatch(changeTheme(themes))
       }
+
       document.documentElement.setAttribute('data-theme', currentTheme)
+      localStorage.setItem('theme', currentTheme)
     }
   }, [currentTheme, dispatch, themes])
 

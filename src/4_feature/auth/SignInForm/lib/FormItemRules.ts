@@ -1,4 +1,4 @@
-import { Rule } from 'antd/es/form'
+import type { Rule } from 'antd/es/form'
 
 export const userNameRule = [
   {
@@ -22,7 +22,6 @@ export const phoneRule: Rule[] = [
     required: true,
     message: 'Пожалуйста, введите номер телефона!',
   },
-  
 ]
 
 export const passwordRule: Rule[] = [
@@ -34,24 +33,28 @@ export const passwordRule: Rule[] = [
     validator: (_, value: string) => {
       if (!/^[a-zA-Z0-9]+$/.test(value)) {
         return Promise.reject(
-          'Пароль может содержать только латинские буквы и цифры.'
+          new Error('Пароль может содержать только латинские буквы и цифры.')
         )
       }
       if (value.length < 8) {
-        return Promise.reject('Пароль должен содержать не менее 8 символов.')
+        return Promise.reject(
+          new Error('Пароль должен содержать не менее 8 символов.')
+        )
       }
 
       if (!/\d/.test(value)) {
-        return Promise.reject('Пароль должен содержать хотя бы одну цифру.')
+        return Promise.reject(
+          new Error('Пароль должен содержать хотя бы одну цифру.')
+        )
       }
       if (!/[a-z]/.test(value)) {
         return Promise.reject(
-          'Пароль должен содержать хотя бы одну строчную букву.'
+          new Error('Пароль должен содержать хотя бы одну строчную букву.')
         )
       }
       if (!/[A-Z]/.test(value)) {
         return Promise.reject(
-          'Пароль должен содержать хотя бы одну заглавную букву.'
+          new Error('Пароль должен содержать хотя бы одну заглавную букву.')
         )
       }
       return Promise.resolve('')

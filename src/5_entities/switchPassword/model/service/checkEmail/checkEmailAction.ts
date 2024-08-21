@@ -1,18 +1,18 @@
 import { createAsyncThunk } from '@reduxjs/toolkit'
 import axios from 'axios'
 
-import {
-  checkEmailPayloadI,
-  checkEmailRejectT,
-  checkEmailResponseT,
-} from './type'
-
 import PasswordRecoveryService from '@/5_entities/switchPassword/api/PasswordRecoveryService'
 
+import type {
+  CheckEmailPayloadI,
+  CheckEmailRejectT,
+  CheckEmailResponseT,
+} from './type'
+
 export const FirstStep = createAsyncThunk<
-  checkEmailResponseT,
-  checkEmailPayloadI,
-  { rejectValue: checkEmailRejectT }
+  CheckEmailResponseT,
+  CheckEmailPayloadI,
+  { rejectValue: CheckEmailRejectT }
 >('auth/forgot', async ({ email }, { rejectWithValue }) => {
   try {
     const response =

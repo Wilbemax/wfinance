@@ -3,6 +3,7 @@
 import type { ReactNode } from 'react'
 import React from 'react'
 import { Provider } from 'react-redux'
+import { AntdRegistry } from '@ant-design/nextjs-registry'
 
 import ThemeProvider from '@/5_entities/theme/lib/ThemeProvider'
 
@@ -14,8 +15,10 @@ type ProviderChildrenProps = {
 }
 export const AppProvider = ({ children }: ProviderChildrenProps) => (
   <Provider store={store}>
-    <ThemeProvider>
-      <LoadingProvider>{children}</LoadingProvider>
-    </ThemeProvider>
+    <AntdRegistry>
+      <ThemeProvider>
+        <LoadingProvider>{children}</LoadingProvider>
+      </ThemeProvider>
+    </AntdRegistry>{' '}
   </Provider>
 )

@@ -1,16 +1,25 @@
-import React, { ChangeEvent } from 'react'
+import type { ChangeEvent } from 'react'
+import React from 'react'
 import type { FormInstance } from 'antd'
 import { AutoComplete, Checkbox, Form, Input } from 'antd'
+import type { DefaultOptionType } from 'antd/es/cascader'
 import Link from 'next/link'
+
 import { ButtonForSignIn } from '../../SigninButtons'
-import { DefaultOptionType } from 'antd/es/cascader'
+import {
+  agreementRule,
+  emailRule,
+  passwordConfirmRule,
+  passwordRule,
+  phoneRule,
+  userNameRule,
+} from '../lib/FormItemRules'
 
 import classes from './classes.module.css'
-import { agreementRule, emailRule, passwordConfirmRule, passwordRule, phoneRule, userNameRule } from '../lib/FormItemRules'
 
 interface SignInFormProps {
   form: FormInstance<any>
-  passwordStatus: "" | "success" | "warning" | "error" | "validating"
+  passwordStatus: '' | 'success' | 'warning' | 'error' | 'validating'
   value: {
     userName: string
     email: string
@@ -27,8 +36,13 @@ interface SignInFormProps {
   }
 }
 
-export const SignInForm = ({ form, passwordStatus, value, emailOptions, func }: SignInFormProps) => {
-
+const SignInForm = ({
+  form,
+  passwordStatus,
+  value,
+  emailOptions,
+  func,
+}: SignInFormProps) => {
   return (
     <Form
       form={form}
@@ -92,13 +106,16 @@ export const SignInForm = ({ form, passwordStatus, value, emailOptions, func }: 
       >
         <Input.Password placeholder='Подтвердить пароль' />
       </Form.Item>
-      <Form.Item
-        name='agreement'
-        valuePropName='checked'
-        rules={agreementRule}
-      >
+      <Form.Item name='agreement' valuePropName='checked' rules={agreementRule}>
         <Checkbox>
-          Я прочитал(-а) <a href=''>соглашение и правила</a>
+          Я прочитал(-а){' '}
+          <a
+            href='https://yandex.ru/legal/rules/'
+            target='_blank'
+            rel='noreferrer'
+          >
+            соглашение и правила
+          </a>
         </Checkbox>
       </Form.Item>
       <Form.Item name='button' noStyle>
@@ -113,3 +130,5 @@ export const SignInForm = ({ form, passwordStatus, value, emailOptions, func }: 
     </Form>
   )
 }
+
+export { SignInForm }
