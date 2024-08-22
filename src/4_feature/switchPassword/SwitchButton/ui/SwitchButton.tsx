@@ -23,6 +23,11 @@ const SwitchButton = ({ form, email, code, password, submittabl }: Props) => {
     submittabl,
   })
 
+  let canSend: boolean = submittable
+
+  if (submittable === false && submittabl === true) {
+    canSend = submittabl
+  }
   // Логика определения текста кнопки
   let buttonText = 'Восстановить'
   if (isLoading) {
@@ -40,7 +45,7 @@ const SwitchButton = ({ form, email, code, password, submittabl }: Props) => {
         style={{ width: '100%' }}
         size='large'
         type='primary'
-        disabled={!submittable}
+        disabled={!canSend}
         loading={isLoading}
         onClick={handleAction}
       >

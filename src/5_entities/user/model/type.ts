@@ -6,7 +6,7 @@ export interface UserI {
   isActivation: boolean
 }
 
-export interface userInitialState {
+export interface UserInitialState {
   refreshToke: string | undefined
   accessToken: string | null
   userLoading: boolean

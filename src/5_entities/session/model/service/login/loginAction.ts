@@ -1,9 +1,9 @@
 import { createAsyncThunk } from '@reduxjs/toolkit'
 import axios from 'axios'
 
-import { LoginPayloadI, LoginRejectI, LoginResponseI } from './type'
-
 import AuthenticationService from '@/5_entities/session/api/AuthenticationService'
+
+import type { LoginPayloadI, LoginRejectI, LoginResponseI } from './type'
 
 export const Login = createAsyncThunk<
   LoginResponseI,

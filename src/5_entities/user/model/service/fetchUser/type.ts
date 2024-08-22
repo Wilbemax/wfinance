@@ -1,9 +1,9 @@
-import { UserI } from '@/6_shared/api/type'
+import type { UserI } from '@/6_shared/api/type'
 
-export interface fetchUserT {
+export interface FetchUserT {
   accessToken: string
   refreshToken: string
   user: UserI
 }
 
-export type fetchUserReject = number
+export type FetchUserReject = number

@@ -5,7 +5,7 @@
 // })
 
 // export default SignInPage
-
+// ура работает без отключения сср))))
 import SignInPage from './ui/SignInPage'
 
 export default SignInPage

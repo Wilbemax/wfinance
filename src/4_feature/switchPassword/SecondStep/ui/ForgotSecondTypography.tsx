@@ -1,6 +1,7 @@
 'use client'
-import { Typography } from 'antd'
+
 import React from 'react'
+import { Typography } from 'antd'
 
 export const ForgotSecondTypography = () => (
   <div>

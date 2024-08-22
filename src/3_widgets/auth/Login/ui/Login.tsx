@@ -7,9 +7,7 @@ const LoginFormWidget = () => {
   const [login, setLogin] = useState<string>('')
   const [password, setPassword] = useState<string>('')
 
-
-  const data = { 
-
+  const data = {
     login,
     password,
   }

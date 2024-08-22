@@ -1,10 +1,10 @@
-import { AxiosResponse } from 'axios'
+import type { AxiosResponse } from 'axios'
+
+import $api from '@/6_shared/api/index'
 
 import PasswordService from '../PasswordSession'
 
-import { ForgotCodeVerificationResponse, ForgotResponse } from './type'
-
-import $api from '@/6_shared/api/index'
+import type { ForgotCodeVerificationResponse, ForgotResponse } from './type'
 
 export default class PasswordRecoveryService {
   static async checkEmailForSwitchPassword(

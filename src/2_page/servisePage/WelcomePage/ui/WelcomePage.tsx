@@ -4,11 +4,11 @@ import { useEffect } from 'react'
 import { useDispatch } from 'react-redux'
 import { useTypewriter } from 'react-simple-typewriter'
 import { Typography } from 'antd'
-import Image from 'next/image'
+import Lottie from 'lottie-react'
 
 import { DirectButton } from '@/4_feature/DirectButton'
 import { removeLoading } from '@/5_entities/app/model/slice'
-import duck from '@/6_shared/public/chpic.su_-_AniDucks_019-ezgif.com-optimize.gif'
+import duck from '@/6_shared/public/_056_ADDCARD_OUT.json'
 
 import classes from './page.module.scss'
 
@@ -38,7 +38,7 @@ const WelcomePage = () => {
             <Typography style={{ fontSize: '24px' }}>{text}</Typography>
           </div>
         </div>
-        <Image src={duck} width={200} height={200} alt='duck' />
+        <Lottie animationData={duck} loop style={{ width: 250 }} />
       </div>
       <DirectButton />
     </main>

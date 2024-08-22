@@ -1,8 +1,8 @@
 import { createSlice } from '@reduxjs/toolkit'
 
-import type { appConditionsInitialState } from './type'
+import type { AppConditionsInitialState } from './type'
 
-const initialState: appConditionsInitialState = {
+const initialState: AppConditionsInitialState = {
   // пока это все нужные функции для приложения
   loadingPage: false,
 }

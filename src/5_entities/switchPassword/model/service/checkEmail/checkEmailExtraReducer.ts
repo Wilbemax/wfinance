@@ -1,9 +1,9 @@
-import { ActionReducerMapBuilder, PayloadAction } from '@reduxjs/toolkit'
+import type { ActionReducerMapBuilder, PayloadAction } from '@reduxjs/toolkit'
 
-import { SwitchPasswordInitialState } from '../../type'
+import type { SwitchPasswordInitialState } from '../../type'
 
 import { FirstStep } from './checkEmailAction'
-import { checkEmailRejectT, checkEmailResponseT } from './type'
+import type { CheckEmailRejectT, CheckEmailResponseT } from './type'
 
 export default function checkEmailExtraReducer(
   builder: ActionReducerMapBuilder<SwitchPasswordInitialState>
@@ -14,7 +14,7 @@ export default function checkEmailExtraReducer(
     })
     .addCase(
       FirstStep.fulfilled,
-      (state, action: PayloadAction<checkEmailResponseT>) => {
+      (state, action: PayloadAction<CheckEmailResponseT>) => {
         state.isLoading = false
         state.activationLink = action.payload
         state.steps.step1 = true
@@ -22,7 +22,7 @@ export default function checkEmailExtraReducer(
     )
     .addCase(
       FirstStep.rejected,
-      (state, action: PayloadAction<checkEmailRejectT | undefined>) => {
+      (state, action: PayloadAction<CheckEmailRejectT | undefined>) => {
         state.isLoading = false
         state.status = action.payload ?? undefined
       }

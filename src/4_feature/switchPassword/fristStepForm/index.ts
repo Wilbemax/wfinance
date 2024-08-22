@@ -1,1 +1,1 @@
-export {FirstStepForm} from './ui/ForgotForm'
+export { FirstStepForm } from './ui/FirstStepForm'
