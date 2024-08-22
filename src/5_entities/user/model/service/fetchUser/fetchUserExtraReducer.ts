@@ -1,15 +1,15 @@
-import { ActionReducerMapBuilder, PayloadAction } from '@reduxjs/toolkit'
+import type { ActionReducerMapBuilder, PayloadAction } from '@reduxjs/toolkit'
 
-import { userInitialState } from '../../type'
+import type { UserInitialState } from '../../type'
 
 import { fetchUser } from './fetchUserAction'
-import {
-  fetchUserT,
+import type {
+  FetchUserT,
   //  fetchUserReject
 } from './type'
 
 export default function fetchUserExtraReducer(
-  builder: ActionReducerMapBuilder<userInitialState>
+  builder: ActionReducerMapBuilder<UserInitialState>
 ) {
   builder
     .addCase(fetchUser.pending, (state) => {
@@ -17,7 +17,7 @@ export default function fetchUserExtraReducer(
     })
     .addCase(
       fetchUser.fulfilled,
-      (state, action: PayloadAction<fetchUserT>) => {
+      (state, action: PayloadAction<FetchUserT>) => {
         state.accessToken = action.payload.accessToken
         state.refreshToke = action.payload.refreshToken
         state.user = { ...action.payload.user }
@@ -30,7 +30,7 @@ export default function fetchUserExtraReducer(
         // action: PayloadAction<fetchUserReject | undefined>
       ) => {
         // eslint-disable-next-line max-len
-        //по хорошему обработку всех ошибок складывать в одно место, например записывать в состояние приложения,что бы потом брать от туда логи или сыпать нотификейшены
+        // по хорошему обработку всех ошибок складывать в одно место, например записывать в состояние приложения,что бы потом брать от туда логи или сыпать нотификейшены
 
         state.userLoading = false
       }

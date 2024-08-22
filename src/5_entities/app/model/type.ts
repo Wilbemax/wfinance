@@ -1,3 +1,3 @@
-export interface appConditionsInitialState {
+export interface AppConditionsInitialState {
   loadingPage: boolean
 }

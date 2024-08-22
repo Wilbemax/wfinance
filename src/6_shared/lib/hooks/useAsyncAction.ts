@@ -1,4 +1,4 @@
-import { Action, AsyncThunk, ThunkDispatch } from '@reduxjs/toolkit'
+import type { Action, AsyncThunk, ThunkDispatch } from '@reduxjs/toolkit'
 
 import { useAppDispatch } from '@/6_shared/model/hooks'
 

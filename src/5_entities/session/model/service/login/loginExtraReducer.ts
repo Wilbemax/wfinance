@@ -1,12 +1,12 @@
-import { ActionReducerMapBuilder, PayloadAction } from '@reduxjs/toolkit'
+import type { ActionReducerMapBuilder, PayloadAction } from '@reduxjs/toolkit'
 
-import { sessionInitialState } from '../../type'
+import type { SessionInitialState } from '../../type'
 
 import { Login } from './loginAction'
-import { LoginRejectI } from './type'
+import type { LoginRejectI } from './type'
 
 export default function loginExtraReducer(
-  builder: ActionReducerMapBuilder<sessionInitialState>
+  builder: ActionReducerMapBuilder<SessionInitialState>
 ) {
   builder
     .addCase(Login.pending, (state) => {

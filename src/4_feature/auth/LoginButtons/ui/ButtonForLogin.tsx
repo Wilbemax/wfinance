@@ -62,8 +62,7 @@ const ButtonForLogin: React.FC<SubmitButtonProps> = ({ form, data }) => {
   //     addShakeOnButton(button)
   //   }
   // }, [sessionError])
-
-  //тоже пропадают стили
+  // тоже пропадают стили
   // let button: HTMLElement | null = null
   // useEffect(() => {
   //   button = document?.getElementById('button')

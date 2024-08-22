@@ -35,7 +35,7 @@ export const steps: Step[] = [
     beckButtonEndpoint: '/auth/forgot',
   },
   {
-    title: 'Успешно', 
+    title: 'Успешно',
     subText: 'Ваш пароль был успешно изменен.',
     FormComponent: ThirdStepForm,
     faqText: '',

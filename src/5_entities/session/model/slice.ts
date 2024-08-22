@@ -3,10 +3,10 @@ import Cookies from 'universal-cookie'
 
 import loginExtraReducer from './service/login/loginExtraReducer'
 import registrationExtraReducer from './service/registration/registrationExtraReducer'
-import type { sessionInitialState } from './type'
+import type { SessionInitialState } from './type'
 
 const cookies = new Cookies()
-const initialState: sessionInitialState = {
+const initialState: SessionInitialState = {
   refreshToken: cookies.get<string>('refreshToken'),
   loading: false,
   sessionError: null,

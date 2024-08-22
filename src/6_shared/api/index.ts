@@ -1,7 +1,8 @@
 import axios from 'axios'
 import Cookies from 'universal-cookie'
-import { AuthResponse } from './type'
+
 import { API_URL } from './config'
+import type { AuthResponse } from './type'
 
 const cookies = new Cookies()
 

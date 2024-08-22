@@ -1,11 +1,9 @@
 'use client'
 
 import { useEffect, useState } from 'react'
-import { DotLottieReact } from '@lottiefiles/dotlottie-react'
 import { Button, Typography } from 'antd'
 import cx from 'classnames'
 import Lottie from 'lottie-react'
-import Image from 'next/image'
 import { useRouter } from 'next/navigation'
 
 import duck from '@/6_shared/public/_097_SCISSORS.json'
@@ -43,14 +41,6 @@ const LoadingPage = () => {
   return (
     <main className={cx(classes.center, 'container')}>
       <div className={cx(classes.wrapper)}>
-        {/* <Image
-          className={classes.duck}
-          src={duck_loading}
-          alt='Loading...'
-          height={250}
-          width={250}
-        /> */}
-        {/* <DotLottieReact src={duck} loop autoplay /> */}
         <Lottie animationData={duck} loop style={{ width: 250 }} />
         {time > 8 ? (
           <Button

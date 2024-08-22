@@ -1,12 +1,12 @@
 import type { ActionReducerMapBuilder, PayloadAction } from '@reduxjs/toolkit'
 
-import type { sessionInitialState } from '../../type'
+import type { SessionInitialState } from '../../type'
 
 import { registration } from './registrationAction'
 import type { RegistrationReject } from './type'
 
 export default function registrationExtraReducer(
-  builder: ActionReducerMapBuilder<sessionInitialState>
+  builder: ActionReducerMapBuilder<SessionInitialState>
 ) {
   builder
     .addCase(registration.pending, (state) => {

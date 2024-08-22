@@ -5,7 +5,7 @@ import Cookies from 'universal-cookie'
 import type { AuthResponse } from '@/6_shared/api/type'
 
 import fetchUserExtraReducer from './service/fetchUser/fetchUserExtraReducer'
-import type { userInitialState } from './type'
+import type { UserInitialState } from './type'
 
 const cookies = new Cookies()
 
@@ -14,7 +14,7 @@ if (typeof window !== 'undefined') {
   accessToken = localStorage.getItem('accessToken')
 }
 
-const initialState: userInitialState = {
+const initialState: UserInitialState = {
   refreshToke: cookies.get<string>('refreshToken'),
   accessToken,
   userLoading: false,

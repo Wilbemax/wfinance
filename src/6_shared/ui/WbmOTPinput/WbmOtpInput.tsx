@@ -1,14 +1,10 @@
 /* eslint-disable indent */
+
 'use client'
 
-import {
-  ChangeEvent,
-  KeyboardEvent,
-  useEffect,
-  useRef,
-  useState,
-  ClipboardEvent,
-} from 'react'
+import type { ChangeEvent, ClipboardEvent, KeyboardEvent } from 'react'
+import { useEffect, useRef, useState } from 'react'
+
 import classes from './WbmOtpInput.module.scss'
 
 interface WbmOtpInputProps {
@@ -34,7 +30,7 @@ export const WbmOtpInput = ({ length = 6, setValue }: WbmOtpInputProps) => {
     index: number,
     e: ChangeEvent<HTMLInputElement>
   ): void => {
-    const value = e.target.value
+    const { value } = e.target
     if (isNaN(+value)) return
     const newOtp = [...otp]
 
@@ -71,6 +67,7 @@ export const WbmOtpInput = ({ length = 6, setValue }: WbmOtpInputProps) => {
       inputRefs.current[index - 1].focus()
     }
 
+    // eslint-disable-next-line default-case
     switch (e.key) {
       case 'ArrowRight':
         if (index < length - 1 && inputRefs.current[index + 1]) {

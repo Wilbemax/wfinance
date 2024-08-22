@@ -2,24 +2,24 @@ export interface ForgotRequestPayload {
   email: string
 }
 
-export type ForgotResponse<response = string> = response
+export type ForgotResponse<Response = string> = Response
 
-export type ForgotError<error = number> = error
+export type ForgotError<Error = number> = Error
 
 export interface ForgotCodeVerificationPayload {
   activationLink: string
   code: string
 }
 
-export type ForgotCodeVerificationResponse<response = string> = response
+export type ForgotCodeVerificationResponse<Response = string> = Response
 
-export type ForgotCodeVerificationError<error = number> = error
+export type ForgotCodeVerificationError<Error = number> = Error
 
 export interface ForgotPasswordSwitchPayload {
   activationLink: string
   password: string
 }
 
-export type ForgotPasswordSwitchResponse<response = string> = response
+export type ForgotPasswordSwitchResponse<Response = string> = Response
 
-export type ForgotPasswordSwitchError<error = number> = error
+export type ForgotPasswordSwitchError<Error = number> = Error
