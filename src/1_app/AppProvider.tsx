@@ -9,6 +9,7 @@ import ThemeProvider from '@/5_entities/theme/lib/ThemeProvider'
 
 import { store } from './appStore'
 import { LoadingProvider } from './LoadingProvider'
+import NotificationProvider from './NotificationProvider'
 
 type ProviderChildrenProps = {
   children: ReactNode
@@ -17,7 +18,9 @@ export const AppProvider = ({ children }: ProviderChildrenProps) => (
   <Provider store={store}>
     <AntdRegistry>
       <ThemeProvider>
-        <LoadingProvider>{children}</LoadingProvider>
+        <NotificationProvider>
+          <LoadingProvider>{children}</LoadingProvider>
+        </NotificationProvider>
       </ThemeProvider>
     </AntdRegistry>{' '}
   </Provider>

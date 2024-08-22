@@ -1,6 +1,7 @@
 import { createAsyncThunk } from '@reduxjs/toolkit'
 import axios from 'axios'
 
+import { setError } from '@/5_entities/app/model/slice'
 import AuthenticationService from '@/5_entities/session/api/AuthenticationService'
 import { setUser } from '@/5_entities/user/model/slice'
 
@@ -18,6 +19,9 @@ export const registration = createAsyncThunk<
 
     return response.data
   } catch (e) {
+    thunkAPI.dispatch(
+      setError('Пожалуйста, попробуйте ещё раз, что-то пошло не так')
+    )
     if (axios.isAxiosError(e)) {
       const errorMessage: ErrorResponse = {
         status: e.response?.status || 500,
