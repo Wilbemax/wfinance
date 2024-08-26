@@ -1,6 +1,6 @@
 'use client'
 
-import { useEffect } from 'react'
+import { useEffect, useLayoutEffect } from 'react'
 import { useDispatch } from 'react-redux'
 import { useRouter } from 'next/navigation'
 import Cookies from 'universal-cookie'
@@ -17,34 +17,21 @@ const withAuth = (WrappedComponent: React.ComponentType) => {
     const token = cookies.get<string>('refreshToken')
     const router = useRouter()
 
-    useEffect(() => {
+    useLayoutEffect(() => {
       const checkAuth = async () => {
-        dispatch(setLoading()) // Инициализация состояния загрузки при монтировании компонента
-
-        if (!token) {
-          router.push('/welcome')
-          dispatch(removeLoading()) // Снятие состояния загрузки после редиректа
-          return
-        }
+        dispatch(setLoading()) // Инициализация состояния загрузки при монтировании компонент
 
         try {
-          await fetchUser()
+          const res = await fetchUser()
+          if (res.payload === 500) throw new Error('Ошибка входа')
         } catch (error) {
           router.push('/welcome')
-        } finally {
-          dispatch(removeLoading()) // Снятие состояния загрузки в любом случае
         }
       }
 
-      checkAuth().catch((error) => {
-        console.error('Ошибка при проверке аутентификации:', error)
-        dispatch(removeLoading()) // Снятие состояния загрузки при возникновении ошибки
-      })
-    }, [token, dispatch, router, fetchUser])
+      checkAuth()
+    }, [dispatch, router, fetchUser])
 
-    if (!token) {
-      return null
-    }
 
     return <WrappedComponent {...props} />
   }
