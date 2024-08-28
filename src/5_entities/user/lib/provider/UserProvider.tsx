@@ -1,10 +1,10 @@
 'use client'
 
-import { useEffect, useLayoutEffect } from 'react'
+import { useEffect } from 'react'
 import { useDispatch } from 'react-redux'
 import { useRouter } from 'next/navigation'
 
-import { removeLoading, setLoading } from '@/5_entities/app/model/slice'
+import { setLoading } from '@/5_entities/app/model/slice'
 
 import { useFetchUser } from '../hooks/useFetchUser'
 
