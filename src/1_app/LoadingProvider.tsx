@@ -18,10 +18,9 @@ export const LoadingProvider = ({ children }: LoadingChildrenProps) => {
     setIsLoading(loadingPage)
   }, [loadingPage])
 
-  return (
-    <>
-      {isLoading && <LoadingPage />}
-      {children}
-    </>
-  )
+  if (isLoading) {
+    return <LoadingPage />
+  }
+
+  return <>{children}</>
 }

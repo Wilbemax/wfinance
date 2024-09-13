@@ -5,6 +5,7 @@ import { useDispatch } from 'react-redux'
 import type { FormInstance } from 'antd'
 import { Button, Form } from 'antd'
 import type { FormContextProps } from 'antd/es/form/context'
+import { useRouter } from 'next/navigation'
 
 import { useFetchLogin } from '@/5_entities/session/lib/useFetchLogin'
 import { useSession } from '@/5_entities/session/lib/useSession'
@@ -23,6 +24,7 @@ const ButtonForLogin: React.FC<SubmitButtonProps> = ({ form, data }) => {
   const { loading, sessionError } = useSession()
   const asyncLogin = useFetchLogin(data)
   const dispatch = useDispatch()
+  const router = useRouter()
 
   const [submittable, setSubmittable] = useState<boolean>(false)
 
@@ -40,6 +42,7 @@ const ButtonForLogin: React.FC<SubmitButtonProps> = ({ form, data }) => {
     try {
       await form.validateFields()
       const res = await asyncLogin()
+      router.push('/')
       console.log(res)
     } catch (error) {
       console.log('Validation failed:', error)

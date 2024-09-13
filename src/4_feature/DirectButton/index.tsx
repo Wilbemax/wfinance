@@ -18,7 +18,7 @@ const DirectButton = () => {
   const router = useRouter()
 
   const handleClick = (href: string) => {
-    dispatch(setLoading())
+    // dispatch(setLoading())
     router.push(href)
   }
 

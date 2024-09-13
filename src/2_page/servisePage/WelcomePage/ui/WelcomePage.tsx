@@ -14,9 +14,7 @@ import classes from './page.module.scss'
 
 const WelcomePage = () => {
   const dispatch = useDispatch()
-  useEffect(() => {
-    dispatch(removeLoading())
-  }, [dispatch])
+  
 
   // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment, @typescript-eslint/no-unsafe-call
   const [text] = useTypewriter({

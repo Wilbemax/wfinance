@@ -31,7 +31,7 @@ const ForgotPage: React.FC = () => {
 
   return (
     <Container>
-      <ForgotStep {...currentStep} />
+      <ForgotStep {...currentStep} beckButtonEndpoint='/auth/login' />
     </Container>
   )
 }

@@ -1,28 +1,38 @@
+/* eslint-disable react-hooks/exhaustive-deps */
+
 'use client'
 
-import { useEffect } from 'react'
+import { useLayoutEffect } from 'react'
 import { useDispatch } from 'react-redux'
 import { useRouter } from 'next/navigation'
 
-import { setLoading } from '@/5_entities/app/model/slice'
+import { removeLoading, setLoading } from '@/5_entities/app/model/slice'
 
 import { useFetchUser } from '../hooks/useFetchUser'
+import { useUser } from '../hooks/useUser'
 
 const withAuth = (WrappedComponent: React.ComponentType) => {
   const ComponentWithAuth: React.FC = (props) => {
+    const user = useUser()
+    const token = user.refreshToke
     const dispatch = useDispatch()
     const fetchUser = useFetchUser()
     const router = useRouter()
 
-    useEffect(() => {
+    useLayoutEffect(() => {
       const checkAuth = async () => {
-        dispatch(setLoading())
         try {
           const res = await fetchUser()
+          dispatch(setLoading())
+          if (res) dispatch(removeLoading())
           if (res.payload === 500) throw new Error('Ошибка входа')
         } catch (error) {
           router.push('/welcome')
         }
+      }
+
+      if (token) {
+        return
       }
 
       const timer = setTimeout(() => {
@@ -30,9 +40,12 @@ const withAuth = (WrappedComponent: React.ComponentType) => {
       }, 0)
 
       return () => clearTimeout(timer)
-    }, [dispatch, router, fetchUser])
+    }, [dispatch, router, token])
 
-    return <WrappedComponent {...props} />
+    if (user.user !== null) {
+      return <WrappedComponent {...props} />
+    }
+    return null
   }
 
   return ComponentWithAuth

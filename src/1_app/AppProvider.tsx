@@ -4,6 +4,7 @@ import type { ReactNode } from 'react'
 import React from 'react'
 import { Provider } from 'react-redux'
 import { AntdRegistry } from '@ant-design/nextjs-registry'
+import NextTopLoader from 'nextjs-toploader'
 
 import ThemeProvider from '@/5_entities/theme/lib/ThemeProvider'
 
@@ -19,9 +20,10 @@ export const AppProvider = ({ children }: ProviderChildrenProps) => (
     <AntdRegistry>
       <ThemeProvider>
         <NotificationProvider>
+          <NextTopLoader />
           <LoadingProvider>{children}</LoadingProvider>
         </NotificationProvider>
       </ThemeProvider>
-    </AntdRegistry>{' '}
+    </AntdRegistry>
   </Provider>
 )
