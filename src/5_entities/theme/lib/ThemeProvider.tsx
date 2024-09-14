@@ -23,17 +23,39 @@ const ThemeProvider = ({ children, themes }: ThemeProviderProps) => {
   useLayoutEffect(() => {
     if (typeof window !== 'undefined') {
       const storedTheme = localStorage.getItem('theme') as ThemeType
+      console.log(storedTheme, currentTheme)
 
+      // Проверяем, нужно ли менять тему
       if (storedTheme && storedTheme !== currentTheme) {
-        dispatch(changeTheme(storedTheme))
-      } else if (themes && themes !== currentTheme) {
-        dispatch(changeTheme(themes))
-      }
+        localStorage.setItem('theme', storedTheme)
+      } else if (!storedTheme) {
+        // Если темы нет в localStorage, используем системную тему
+        const systemPrefersDark = window.matchMedia(
+          '(prefers-color-scheme: dark)'
+        ).matches
+        const systemTheme = systemPrefersDark ? 'dark' : 'light'
+        console.log(systemTheme);
 
-      document.documentElement.setAttribute('data-theme', currentTheme)
+        // Проверяем, нужно ли обновлять тему
+        if (systemTheme !== currentTheme) {
+          dispatch(changeTheme(systemTheme))
+        }
+      }
+    }
+  }, [currentTheme, dispatch])
+
+  // Избегаем ненужных обновлений атрибутов и localStorage
+  useLayoutEffect(() => {
+    if (typeof window !== 'undefined') {
+      // Устанавливаем атрибут data-theme только если он действительно изменился
+      const currentHtmlTheme =
+        document.documentElement.getAttribute('data-theme')
+      if (currentHtmlTheme !== currentTheme) {
+        document.documentElement.setAttribute('data-theme', currentTheme)
+      }
       localStorage.setItem('theme', currentTheme)
     }
-  }, [currentTheme, dispatch, themes])
+  }, [currentTheme])
 
   return (
     <ConfigProvider
