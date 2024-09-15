@@ -18,7 +18,7 @@ export const ThirdStep = createAsyncThunk<
         activationLink,
         password
       )
-      console.log(response)
+      // console.log(response)
       return response.data
     } catch (e) {
       dispatch(setError('Пожалуйста, попробуйте ещё раз, что-то пошло не так'))

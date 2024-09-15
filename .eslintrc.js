@@ -96,6 +96,7 @@ module.exports = {
         '@typescript-eslint/no-misused-promises': 'off',
         '@typescript-eslint/ban-ts-comment': 'off',
         '@typescript-eslint/no-shadow': 'off',
+        '@typescript-eslint/no-floating-promises': 'off',
         '@typescript-eslint/restrict-template-expressions': [
           'warn',
           { allowBoolean: true, allowNullish: true },

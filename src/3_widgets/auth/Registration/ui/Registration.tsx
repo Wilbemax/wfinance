@@ -26,7 +26,6 @@ const FormWidget = () => {
 
   // баг с бесконечным комплитом строки
   const onEmailChange = (value: string) => {
-    console.log(value.endsWith('@'))
     const domain = ['@gmail.com', '@mail.ru', '@yandex.ru']
 
     if (!value) {

@@ -3,6 +3,7 @@ import axios from 'axios'
 
 import { setError } from '@/5_entities/app/model/slice'
 import AuthenticationService from '@/5_entities/session/api/AuthenticationService'
+import { setUser } from '@/5_entities/user/model/slice'
 
 import type { LoginPayloadI, LoginRejectI, LoginResponseI } from './type'
 
@@ -14,6 +15,7 @@ export const Login = createAsyncThunk<
   try {
     const response = await AuthenticationService.login(login, password)
     localStorage.setItem('token', response.data.accessToken)
+    dispatch(setUser(response.data))
     return response.data
   } catch (e) {
     // Используем dispatch для вызова setError

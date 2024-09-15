@@ -30,6 +30,9 @@ img {
   }
 }
 
+.color-white{
+  color: #fff;
+}
 .container {
   width: 92%;
   margin: 0 auto;
@@ -37,4 +40,16 @@ img {
 
 [data-theme='dark'] body {
   background: #23272e;
+}
+
+#nprogress .bar {
+  @apply bg-primary !important;
+}
+
+#nprogress .peg {
+  @apply shadow-md shadow-primary !important;
+}
+
+#nprogress .spinner-icon {
+  @apply border-t-primary border-l-primary !important;
 }

@@ -17,7 +17,6 @@ export const fetchUser = createAsyncThunk<
     const response = await axios.get<FetchUserT>(`${api}/refresh`, {
       withCredentials: true,
     })
-    localStorage.setItem('token', response.data.accessToken)
     return response.data
   } catch (e) {
     if (axios.isAxiosError(e) && e.response?.status === 400) {

@@ -1,52 +1,51 @@
+/* eslint-disable react-hooks/exhaustive-deps */
+
 'use client'
 
-import { useEffect } from 'react'
+import { useLayoutEffect } from 'react'
 import { useDispatch } from 'react-redux'
 import { useRouter } from 'next/navigation'
-import Cookies from 'universal-cookie'
 
 import { removeLoading, setLoading } from '@/5_entities/app/model/slice'
 
 import { useFetchUser } from '../hooks/useFetchUser'
+import { useUser } from '../hooks/useUser'
 
 const withAuth = (WrappedComponent: React.ComponentType) => {
   const ComponentWithAuth: React.FC = (props) => {
+    const user = useUser()
+    const token = user.refreshToke
     const dispatch = useDispatch()
-    const cookies = new Cookies()
     const fetchUser = useFetchUser()
-    const token = cookies.get<string>('refreshToken')
     const router = useRouter()
 
-    useEffect(() => {
+    useLayoutEffect(() => {
       const checkAuth = async () => {
-        dispatch(setLoading()) // Инициализация состояния загрузки при монтировании компонента
-
-        if (!token) {
-          router.push('/welcome')
-          dispatch(removeLoading()) // Снятие состояния загрузки после редиректа
-          return
-        }
-
         try {
-          await fetchUser()
+          const res = await fetchUser()
+          dispatch(setLoading())
+          if (res) dispatch(removeLoading())
+          if (res.payload === 500) throw new Error('Ошибка входа')
         } catch (error) {
           router.push('/welcome')
-        } finally {
-          dispatch(removeLoading()) // Снятие состояния загрузки в любом случае
         }
       }
 
-      checkAuth().catch((error) => {
-        console.error('Ошибка при проверке аутентификации:', error)
-        dispatch(removeLoading()) // Снятие состояния загрузки при возникновении ошибки
-      })
-    }, [token, dispatch, router, fetchUser])
+      if (token) {
+        return
+      }
 
-    if (!token) {
-      return null
+      const timer = setTimeout(() => {
+        checkAuth()
+      }, 0)
+
+      return () => clearTimeout(timer)
+    }, [dispatch, router, token])
+
+    if (user.user !== null) {
+      return <WrappedComponent {...props} />
     }
-
-    return <WrappedComponent {...props} />
+    return null
   }
 
   return ComponentWithAuth

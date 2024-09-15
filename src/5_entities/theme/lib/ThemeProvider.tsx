@@ -1,7 +1,7 @@
 'use client'
 
 import type { ReactNode } from 'react'
-import { useLayoutEffect } from 'react'
+import { useLayoutEffect, useState } from 'react'
 import { ConfigProvider, theme } from 'antd'
 
 import { useAppDispatch, useAppSelector } from '@/6_shared/model/hooks'
@@ -11,29 +11,54 @@ import type { ThemeType } from '../model/type'
 
 type ThemeProviderProps = {
   children: ReactNode
-  themes?: ThemeType
 }
 
-const ThemeProvider = ({ children, themes }: ThemeProviderProps) => {
+const ThemeProvider = ({ children }: ThemeProviderProps) => {
   const currentTheme = useAppSelector(
     (state) => state.theme.currentTheme
   ) as ThemeType
   const dispatch = useAppDispatch()
+  const [algorithm, setAlgorithm] = useState()
 
   useLayoutEffect(() => {
     if (typeof window !== 'undefined') {
       const storedTheme = localStorage.getItem('theme') as ThemeType
+      // console.log(storedTheme, currentTheme)
 
+      // Проверяем, нужно ли менять тему
       if (storedTheme && storedTheme !== currentTheme) {
-        dispatch(changeTheme(storedTheme))
-      } else if (themes && themes !== currentTheme) {
-        dispatch(changeTheme(themes))
-      }
+        localStorage.setItem('theme', storedTheme)
+      } else if (!storedTheme) {
+        // Если темы нет в localStorage, используем системную тему
+        const systemPrefersDark = window.matchMedia(
+          '(prefers-color-scheme: dark)'
+        ).matches
+        const systemTheme = systemPrefersDark ? 'dark' : 'light'
+        // console.log(systemTheme)
 
-      document.documentElement.setAttribute('data-theme', currentTheme)
+        // Проверяем, нужно ли обновлять тему
+        if (systemTheme !== currentTheme) {
+          dispatch(changeTheme(systemTheme))
+
+        }
+      }
+    }
+  }, [currentTheme, dispatch])
+
+  // Избегаем ненужных обновлений атрибутов и localStorage
+  useLayoutEffect(() => {
+    if (typeof window !== 'undefined') {
+      // Устанавливаем атрибут data-theme только если он действительно изменился
+      const currentHtmlTheme =
+        document.documentElement.getAttribute('data-theme')
+      if (currentHtmlTheme !== currentTheme) {
+        document.documentElement.setAttribute('data-theme', currentTheme)
+      }
       localStorage.setItem('theme', currentTheme)
     }
-  }, [currentTheme, dispatch, themes])
+  }, [currentTheme])
+
+  console.log(currentTheme === 'dark');
 
   return (
     <ConfigProvider

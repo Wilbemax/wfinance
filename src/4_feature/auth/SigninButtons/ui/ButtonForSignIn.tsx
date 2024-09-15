@@ -36,7 +36,7 @@ const ButtonForSignIn: React.FC<SubmitButtonProps> = ({ form, data }) => {
     try {
       await form.validateFields()
       const res = await awaitSignIn()
-      console.log(res)
+      // console.log(res)
     } catch (error) {
       console.log('Validation failed:', error)
     }
