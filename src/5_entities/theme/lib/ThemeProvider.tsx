@@ -1,7 +1,7 @@
 'use client'
 
 import type { ReactNode } from 'react'
-import { useLayoutEffect, useState } from 'react'
+import { useLayoutEffect } from 'react'
 import { ConfigProvider, theme } from 'antd'
 
 import { useAppDispatch, useAppSelector } from '@/6_shared/model/hooks'
@@ -18,7 +18,6 @@ const ThemeProvider = ({ children }: ThemeProviderProps) => {
     (state) => state.theme.currentTheme
   ) as ThemeType
   const dispatch = useAppDispatch()
-  const [algorithm, setAlgorithm] = useState()
 
   useLayoutEffect(() => {
     if (typeof window !== 'undefined') {
@@ -39,7 +38,6 @@ const ThemeProvider = ({ children }: ThemeProviderProps) => {
         // Проверяем, нужно ли обновлять тему
         if (systemTheme !== currentTheme) {
           dispatch(changeTheme(systemTheme))
-
         }
       }
     }
@@ -57,8 +55,6 @@ const ThemeProvider = ({ children }: ThemeProviderProps) => {
       localStorage.setItem('theme', currentTheme)
     }
   }, [currentTheme])
-
-  console.log(currentTheme === 'dark');
 
   return (
     <ConfigProvider
