@@ -5,6 +5,7 @@ import { MoveDownRight, MoveUpRight, ShoppingBasket } from 'lucide-react'
 import Image from 'next/image'
 
 import { useUser } from '@/5_entities/user/lib/hooks/useUser'
+import logo2 from '@/6_shared/public/_5ka.gif'
 import logo from '@/6_shared/public/95708730.jpeg'
 import { Container } from '@/6_shared/ui/continer'
 
@@ -88,7 +89,7 @@ const HomePage = (props: Props) => {
 
       {/* баджы про бюджет */}
 
-      <Typography.Title level={4}>Бюджеты</Typography.Title>
+      <Typography.Title level={5}>Бюджеты</Typography.Title>
       <div className={classes.budgetWrapper}>
         {/* Блок, который изменяет высоту в зависимости от процента */}
         <div
@@ -113,6 +114,87 @@ const HomePage = (props: Props) => {
             </Typography.Text>
           </div>
         </div>
+      </div>
+
+      {/* лист покупок по дням  */}
+      <div className={classes.list}>
+        <div className={classes.date}>
+          <Typography.Title
+            level={5}
+            style={{ margin: 0, padding: 0, textWrap: 'nowrap' }}
+          >
+            14 января, понедельник
+          </Typography.Title>
+          <div className={classes.border} />
+        </div>
+        <Container>
+          <div className={classes.listItem}>
+            <div className={classes.shop}>
+              <Image
+                className={classes.shopLogo}
+                src={logo2}
+                alt='logo'
+                width={100}
+                height={100}
+              />
+              <div className={classes.shopInfo}>
+                <div>
+                  <Typography.Title
+                    level={5}
+                    style={{ margin: 0, padding: 0, lineHeight: 0.9 }}
+                  >
+                    Пятерочка
+                  </Typography.Title>
+                </div>
+                <div>
+                  <Typography.Text
+                    style={{ color: '#a2a1a4', lineHeight: 0.9 }}
+                  >
+                    Продукты{' '}
+                  </Typography.Text>
+                </div>
+              </div>
+            </div>
+            <div className={classes.price}>
+              <Typography.Title level={5} style={{ margin: 0, padding: 0 }}>
+                3 493 ₽{' '}
+              </Typography.Title>
+            </div>
+          </div>
+          <div className={classes.listItem}>
+            <div className={classes.shop}>
+              <Image
+                className={classes.shopLogo}
+                src={logo2}
+                alt='logo'
+                width={100}
+                height={100}
+              />
+              <div className={classes.shopInfo}>
+                <div>
+                  <Typography.Title
+                    level={5}
+                    style={{ margin: 0, padding: 0, lineHeight: 0.9 }}
+                  >
+                    Пятерочка
+                  </Typography.Title>
+                </div>
+                <div>
+                  <Typography.Text
+                    style={{ color: '#a2a1a4', lineHeight: 0.9 }}
+                  >
+                    Продукты{' '}
+                  </Typography.Text>
+                </div>
+              </div>
+            </div>
+            <div className={classes.price}>
+              <Typography.Title level={5} style={{ margin: 0, padding: 0 }}>
+                4 233 ₽{' '}
+              </Typography.Title>
+            </div>
+          </div>
+        </Container>
       </div>
     </Container>
   )

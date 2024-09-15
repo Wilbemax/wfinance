@@ -1,7 +1,7 @@
 'use client'
 
 import type { ReactNode } from 'react'
-import { useLayoutEffect } from 'react'
+import { useLayoutEffect, useState } from 'react'
 import { ConfigProvider, theme } from 'antd'
 
 import { useAppDispatch, useAppSelector } from '@/6_shared/model/hooks'
@@ -11,19 +11,19 @@ import type { ThemeType } from '../model/type'
 
 type ThemeProviderProps = {
   children: ReactNode
-  themes?: ThemeType
 }
 
-const ThemeProvider = ({ children, themes }: ThemeProviderProps) => {
+const ThemeProvider = ({ children }: ThemeProviderProps) => {
   const currentTheme = useAppSelector(
     (state) => state.theme.currentTheme
   ) as ThemeType
   const dispatch = useAppDispatch()
+  const [algorithm, setAlgorithm] = useState()
 
   useLayoutEffect(() => {
     if (typeof window !== 'undefined') {
       const storedTheme = localStorage.getItem('theme') as ThemeType
-      console.log(storedTheme, currentTheme)
+      // console.log(storedTheme, currentTheme)
 
       // Проверяем, нужно ли менять тему
       if (storedTheme && storedTheme !== currentTheme) {
@@ -34,11 +34,12 @@ const ThemeProvider = ({ children, themes }: ThemeProviderProps) => {
           '(prefers-color-scheme: dark)'
         ).matches
         const systemTheme = systemPrefersDark ? 'dark' : 'light'
-        console.log(systemTheme);
+        // console.log(systemTheme)
 
         // Проверяем, нужно ли обновлять тему
         if (systemTheme !== currentTheme) {
           dispatch(changeTheme(systemTheme))
+
         }
       }
     }
@@ -56,6 +57,8 @@ const ThemeProvider = ({ children, themes }: ThemeProviderProps) => {
       localStorage.setItem('theme', currentTheme)
     }
   }, [currentTheme])
+
+  console.log(currentTheme === 'dark');
 
   return (
     <ConfigProvider

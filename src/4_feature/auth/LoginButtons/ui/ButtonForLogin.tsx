@@ -42,8 +42,10 @@ const ButtonForLogin: React.FC<SubmitButtonProps> = ({ form, data }) => {
     try {
       await form.validateFields()
       const res = await asyncLogin()
+      if (res.meta.requestStatus === 'rejected') {
+        throw new Error('In correct login or password')
+      }
       router.push('/')
-      console.log(res)
     } catch (error) {
       console.log('Validation failed:', error)
     }

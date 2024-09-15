@@ -39,7 +39,7 @@ export const registration = createAsyncThunk<
         errorMessage.message = e.response.data.message
       }
 
-      console.log(errorMessage)
+      // console.log(errorMessage)
       return thunkAPI.rejectWithValue(errorMessage)
     }
 

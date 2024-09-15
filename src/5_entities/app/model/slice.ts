@@ -16,11 +16,11 @@ export const appConditionsSlice = createSlice({
     setLoading: (state) => {
       // debugger
       state.loadingPage = true
-      console.log('set loading')
+      // console.log('set loading')
     },
     removeLoading: (state) => {
       state.loadingPage = false
-      console.log('remove loading')
+      // console.log('remove loading')
     },
     setError: (state, action: PayloadAction<string>) => {
       state.error = action.payload
