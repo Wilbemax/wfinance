@@ -5,6 +5,7 @@ import { useDispatch } from 'react-redux'
 import type { FormInstance } from 'antd'
 import { Button, Form } from 'antd'
 import type { FormContextProps } from 'antd/es/form/context'
+import { useRouter } from 'next/navigation'
 
 import { useFetchRegistration } from '@/5_entities/session/lib/useFetchRegistration'
 import { useSession } from '@/5_entities/session/lib/useSession'
@@ -21,7 +22,7 @@ const ButtonForSignIn: React.FC<SubmitButtonProps> = ({ form, data }) => {
   const { loading, sessionError } = useSession()
   const [submittable, setSubmittable] = useState<boolean>(false)
   const values = Form.useWatch<FormContextProps>([], form)
-
+  const router = useRouter()
   const awaitSignIn = useFetchRegistration(data)
   const dispatch = useDispatch()
 
@@ -36,7 +37,9 @@ const ButtonForSignIn: React.FC<SubmitButtonProps> = ({ form, data }) => {
     try {
       await form.validateFields()
       const res = await awaitSignIn()
-      // console.log(res)
+      if (res.meta.requestStatus === 'fulfilled') {
+        router.push('/')
+      }
     } catch (error) {
       console.log('Validation failed:', error)
     }
@@ -49,15 +52,6 @@ const ButtonForSignIn: React.FC<SubmitButtonProps> = ({ form, data }) => {
 
     return () => clearTimeout(timeOut)
   }, [dispatch, sessionError])
-
-  // нужно сделать так, но при жтом варианте когда обновляешь странцу импуты перестают быть черными
-
-  // useEffect(() => {
-  //   if (typeof window !== 'undefined' && sessionError) {
-  //     const button = document.getElementById('button')
-  //     addShakeOnButton(button)
-  //   }
-  // }, [sessionError])
 
   const button: HTMLElement | null = document?.getElementById('button')
   if (sessionError) {

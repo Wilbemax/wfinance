@@ -1,0 +1,83 @@
+.cart {
+
+  margin-bottom: 1.4rem;
+  display: flex;
+  flex-direction: column;
+  height: 170px;
+  overflow: hidden;
+  justify-content: space-between;
+  border-radius: 15px;
+  background-size: 300% 300%;
+  background-image: linear-gradient(94deg, rgba(20, 145, 168, 1) 37%, rgba(79, 80, 160, 1) 68%);
+  -webkit-animation: AnimateBG 20s ease infinite;
+  animation: AnimateBG 15s ease infinite;
+}
+
+@-webkit-keyframes AnimateBG {
+  0% {
+    background-position: 40% 50%;
+  }
+
+  50% {
+    background-position: 99% 50%;
+  }
+
+  100% {
+    background-position: 40% 50%;
+  }
+}
+
+@keyframes AnimateBG {
+  0% {
+    background-position: 40% 50%;
+  }
+
+  50% {
+    background-position: 99% 50%;
+  }
+
+  100% {
+    background-position: 40% 50%;
+  }
+}
+
+.topInf {
+  color: #fff;
+  padding: 1.2rem 1.2rem 0 1.2rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.avatar {
+  border-radius: 50%;
+  width: 75px;
+  height: 75px;
+}
+
+.downInf {
+  display: flex;
+  justify-content: space-between;
+
+  display: flex;
+  width: 100%;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.up {
+  width: 100%;
+  background: #00000020;
+  padding: .7rem 1.2rem;
+}
+
+.down {
+  width: 100%;
+  padding: .7rem 1.2rem;
+  background: #00000034;
+}
+
+.text {
+  display: flex;
+  align-items: center;
+}

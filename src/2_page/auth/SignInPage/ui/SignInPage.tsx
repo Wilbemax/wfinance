@@ -14,7 +14,7 @@ const SignInPage = () => {
   useEffect(() => {
     dispatch(removeLoading())
   }, [dispatch])
-
+  /// сделать страцу для подтверждения аккунат
   return (
     <Container>
       <Typography.Title
