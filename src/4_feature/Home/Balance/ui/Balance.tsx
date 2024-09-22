@@ -1,6 +1,11 @@
 import React from 'react'
 import { Typography } from 'antd'
-import { MoveDownRight, MoveUpRight } from 'lucide-react'
+import {
+  MoveDownRight,
+  MoveUpRight,
+  TrendingDown,
+  TrendingUp,
+} from 'lucide-react'
 import Image from 'next/image'
 
 import classes from './classes.module.scss'
@@ -51,9 +56,9 @@ const Balance = ({
           <Typography.Title
             className={classes.text}
             level={5}
-            style={{ margin: 0, padding: 0, color: '#fff' }}
+            style={{ margin: 0, padding: 0, color: '#fff', gap: '.5rem' }}
           >
-            {expenses.toLocaleString('ru-RU')} ₽ <MoveDownRight size={16} />
+            {expenses.toLocaleString('ru-RU')} ₽ <MoveDownRight size={16} st />
           </Typography.Title>
           <Typography.Text style={{ lineHeight: 0, color: '#fff' }}>
             Расходы в {month}
@@ -63,7 +68,7 @@ const Balance = ({
           <Typography.Title
             className={classes.text}
             level={5}
-            style={{ margin: 0, padding: 0, color: '#fff' }}
+            style={{ margin: 0, padding: 0, color: '#fff', gap: '.5rem' }}
           >
             {income.toLocaleString('ru-RU')}₽ <MoveUpRight size={16} />
           </Typography.Title>

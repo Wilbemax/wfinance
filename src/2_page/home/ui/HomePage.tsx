@@ -150,6 +150,336 @@ const HomePage = (props: Props) => {
               </Typography.Title>
             </div>
           </div>
+          <div className={classes.listItem}>
+            <div className={classes.shop}>
+              <Image
+                className={classes.shopLogo}
+                src={logo2}
+                alt='logo'
+                width={100}
+                height={100}
+              />
+              <div className={classes.shopInfo}>
+                <div>
+                  <Typography.Title
+                    level={5}
+                    style={{ margin: 0, padding: 0, lineHeight: 0.9 }}
+                  >
+                    Пятерочка
+                  </Typography.Title>
+                </div>
+                <div>
+                  <Typography.Text
+                    style={{ color: '#a2a1a4', lineHeight: 0.9 }}
+                  >
+                    Продукты{' '}
+                  </Typography.Text>
+                </div>
+              </div>
+            </div>
+            <div className={classes.price}>
+              <Typography.Title level={5} style={{ margin: 0, padding: 0 }}>
+                4 233 ₽{' '}
+              </Typography.Title>
+            </div>
+          </div>
+          <div className={classes.listItem}>
+            <div className={classes.shop}>
+              <Image
+                className={classes.shopLogo}
+                src={logo2}
+                alt='logo'
+                width={100}
+                height={100}
+              />
+              <div className={classes.shopInfo}>
+                <div>
+                  <Typography.Title
+                    level={5}
+                    style={{ margin: 0, padding: 0, lineHeight: 0.9 }}
+                  >
+                    Пятерочка
+                  </Typography.Title>
+                </div>
+                <div>
+                  <Typography.Text
+                    style={{ color: '#a2a1a4', lineHeight: 0.9 }}
+                  >
+                    Продукты{' '}
+                  </Typography.Text>
+                </div>
+              </div>
+            </div>
+            <div className={classes.price}>
+              <Typography.Title level={5} style={{ margin: 0, padding: 0 }}>
+                4 233 ₽{' '}
+              </Typography.Title>
+            </div>
+          </div>
+          <div className={classes.listItem}>
+            <div className={classes.shop}>
+              <Image
+                className={classes.shopLogo}
+                src={logo2}
+                alt='logo'
+                width={100}
+                height={100}
+              />
+              <div className={classes.shopInfo}>
+                <div>
+                  <Typography.Title
+                    level={5}
+                    style={{ margin: 0, padding: 0, lineHeight: 0.9 }}
+                  >
+                    Пятерочка
+                  </Typography.Title>
+                </div>
+                <div>
+                  <Typography.Text
+                    style={{ color: '#a2a1a4', lineHeight: 0.9 }}
+                  >
+                    Продукты{' '}
+                  </Typography.Text>
+                </div>
+              </div>
+            </div>
+            <div className={classes.price}>
+              <Typography.Title level={5} style={{ margin: 0, padding: 0 }}>
+                4 233 ₽{' '}
+              </Typography.Title>
+            </div>
+          </div>
+          <div className={classes.listItem}>
+            <div className={classes.shop}>
+              <Image
+                className={classes.shopLogo}
+                src={logo2}
+                alt='logo'
+                width={100}
+                height={100}
+              />
+              <div className={classes.shopInfo}>
+                <div>
+                  <Typography.Title
+                    level={5}
+                    style={{ margin: 0, padding: 0, lineHeight: 0.9 }}
+                  >
+                    Пятерочка
+                  </Typography.Title>
+                </div>
+                <div>
+                  <Typography.Text
+                    style={{ color: '#a2a1a4', lineHeight: 0.9 }}
+                  >
+                    Продукты{' '}
+                  </Typography.Text>
+                </div>
+              </div>
+            </div>
+            <div className={classes.price}>
+              <Typography.Title level={5} style={{ margin: 0, padding: 0 }}>
+                4 233 ₽{' '}
+              </Typography.Title>
+            </div>
+          </div>
+          <div className={classes.listItem}>
+            <div className={classes.shop}>
+              <Image
+                className={classes.shopLogo}
+                src={logo2}
+                alt='logo'
+                width={100}
+                height={100}
+              />
+              <div className={classes.shopInfo}>
+                <div>
+                  <Typography.Title
+                    level={5}
+                    style={{ margin: 0, padding: 0, lineHeight: 0.9 }}
+                  >
+                    Пятерочка
+                  </Typography.Title>
+                </div>
+                <div>
+                  <Typography.Text
+                    style={{ color: '#a2a1a4', lineHeight: 0.9 }}
+                  >
+                    Продукты{' '}
+                  </Typography.Text>
+                </div>
+              </div>
+            </div>
+            <div className={classes.price}>
+              <Typography.Title level={5} style={{ margin: 0, padding: 0 }}>
+                4 233 ₽{' '}
+              </Typography.Title>
+            </div>
+          </div>
+          <div className={classes.listItem}>
+            <div className={classes.shop}>
+              <Image
+                className={classes.shopLogo}
+                src={logo2}
+                alt='logo'
+                width={100}
+                height={100}
+              />
+              <div className={classes.shopInfo}>
+                <div>
+                  <Typography.Title
+                    level={5}
+                    style={{ margin: 0, padding: 0, lineHeight: 0.9 }}
+                  >
+                    Пятерочка
+                  </Typography.Title>
+                </div>
+                <div>
+                  <Typography.Text
+                    style={{ color: '#a2a1a4', lineHeight: 0.9 }}
+                  >
+                    Продукты{' '}
+                  </Typography.Text>
+                </div>
+              </div>
+            </div>
+            <div className={classes.price}>
+              <Typography.Title level={5} style={{ margin: 0, padding: 0 }}>
+                4 233 ₽{' '}
+              </Typography.Title>
+            </div>
+          </div>
+          <div className={classes.listItem}>
+            <div className={classes.shop}>
+              <Image
+                className={classes.shopLogo}
+                src={logo2}
+                alt='logo'
+                width={100}
+                height={100}
+              />
+              <div className={classes.shopInfo}>
+                <div>
+                  <Typography.Title
+                    level={5}
+                    style={{ margin: 0, padding: 0, lineHeight: 0.9 }}
+                  >
+                    Пятерочка
+                  </Typography.Title>
+                </div>
+                <div>
+                  <Typography.Text
+                    style={{ color: '#a2a1a4', lineHeight: 0.9 }}
+                  >
+                    Продукты{' '}
+                  </Typography.Text>
+                </div>
+              </div>
+            </div>
+            <div className={classes.price}>
+              <Typography.Title level={5} style={{ margin: 0, padding: 0 }}>
+                4 233 ₽{' '}
+              </Typography.Title>
+            </div>
+          </div>
+          <div className={classes.listItem}>
+            <div className={classes.shop}>
+              <Image
+                className={classes.shopLogo}
+                src={logo2}
+                alt='logo'
+                width={100}
+                height={100}
+              />
+              <div className={classes.shopInfo}>
+                <div>
+                  <Typography.Title
+                    level={5}
+                    style={{ margin: 0, padding: 0, lineHeight: 0.9 }}
+                  >
+                    Пятерочка
+                  </Typography.Title>
+                </div>
+                <div>
+                  <Typography.Text
+                    style={{ color: '#a2a1a4', lineHeight: 0.9 }}
+                  >
+                    Продукты{' '}
+                  </Typography.Text>
+                </div>
+              </div>
+            </div>
+            <div className={classes.price}>
+              <Typography.Title level={5} style={{ margin: 0, padding: 0 }}>
+                4 233 ₽{' '}
+              </Typography.Title>
+            </div>
+          </div>
+          <div className={classes.listItem}>
+            <div className={classes.shop}>
+              <Image
+                className={classes.shopLogo}
+                src={logo2}
+                alt='logo'
+                width={100}
+                height={100}
+              />
+              <div className={classes.shopInfo}>
+                <div>
+                  <Typography.Title
+                    level={5}
+                    style={{ margin: 0, padding: 0, lineHeight: 0.9 }}
+                  >
+                    Пятерочка
+                  </Typography.Title>
+                </div>
+                <div>
+                  <Typography.Text
+                    style={{ color: '#a2a1a4', lineHeight: 0.9 }}
+                  >
+                    Продукты{' '}
+                  </Typography.Text>
+                </div>
+              </div>
+            </div>
+            <div className={classes.price}>
+              <Typography.Title level={5} style={{ margin: 0, padding: 0 }}>
+                4 233 ₽{' '}
+              </Typography.Title>
+            </div>
+          </div>
+          <div className={classes.listItem}>
+            <div className={classes.shop}>
+              <Image
+                className={classes.shopLogo}
+                src={logo2}
+                alt='logo'
+                width={100}
+                height={100}
+              />
+              <div className={classes.shopInfo}>
+                <div>
+                  <Typography.Title
+                    level={5}
+                    style={{ margin: 0, padding: 0, lineHeight: 0.9 }}
+                  >
+                    Пятерочка
+                  </Typography.Title>
+                </div>
+                <div>
+                  <Typography.Text
+                    style={{ color: '#a2a1a4', lineHeight: 0.9 }}
+                  >
+                    Продукты{' '}
+                  </Typography.Text>
+                </div>
+              </div>
+            </div>
+            <div className={classes.price}>
+              <Typography.Title level={5} style={{ margin: 0, padding: 0 }}>
+                4 233 ₽{' '}
+              </Typography.Title>
+            </div>
+          </div>
         </Container>
       </div>
     </Container>

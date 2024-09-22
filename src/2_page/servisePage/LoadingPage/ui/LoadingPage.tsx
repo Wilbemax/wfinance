@@ -17,7 +17,7 @@ const LoadingPage = () => {
 
   const handleReload = () => {
     if (router) {
-      router.refresh()
+      router.push('/')
     }
   }
   useEffect(() => {
