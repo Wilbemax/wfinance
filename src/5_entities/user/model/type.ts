@@ -28,3 +28,26 @@ export interface BalanceResponse {
   incomes: Income[]
   __v: number
 }
+
+// Тип для pereMonth
+export interface PereMonth {
+  year: number
+  month: number
+  maxExpense: number
+  totalAmount: number
+}
+
+// Тип для каждого элемента бюджета (BudgetItem)
+export interface BudgetItem {
+  name: string
+  color: string
+  icon: string
+  maxExpenses: number
+  totalAmount: number
+  pereMonth: PereMonth[]
+}
+
+// Тип для всех бюджетов пользователя (UserBudgets)
+export interface UserBudgets {
+  budgets: BudgetItem[]
+}

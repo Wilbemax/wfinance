@@ -21,7 +21,7 @@ const Navbar = (props: Props) => {
     if (isScrollingDown) {
       timer = setTimeout(() => {
         setIsVisible(false)
-      }, 100)
+      }, 200)
     }
 
     if (isScrollingUp) setIsVisible(true)
@@ -72,7 +72,7 @@ const Navbar = (props: Props) => {
       </Link>
       <Link
         href='/user'
-        className={cx(classes.icon,  {
+        className={cx(classes.icon, {
           [classes.activeIcon]: isActive('/user'),
         })}
       >
