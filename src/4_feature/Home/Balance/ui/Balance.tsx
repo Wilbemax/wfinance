@@ -37,7 +37,15 @@ const Balance = ({
           >
             {balance.toLocaleString('ru-RU')} ₽
           </Typography.Title>
-          <Typography.Text style={{ lineHeight: 0, color: '#fff' }}>
+          <Typography.Text
+            style={{
+              lineHeight: 1,
+              color: '#fff',
+
+              maxWidth: 200,
+              display: 'block',
+            }}
+          >
             {userName}, ваш баланс на сегодня
           </Typography.Text>
         </div>

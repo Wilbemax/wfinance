@@ -1,15 +1,15 @@
 'use client '
 
+import { useState } from 'react'
 import { Typography } from 'antd'
-import { MoveDownRight, MoveUpRight, ShoppingBasket } from 'lucide-react'
 import Image from 'next/image'
 
 import { BalanceWidget } from '@/3_widgets/home/BalanceWidget'
 import { BudgetWidgets } from '@/3_widgets/home/BudgetWidgets'
-import { Balance } from '@/4_feature/Home/Balance'
+import type { ThemeType } from '@/5_entities/theme/model/type'
 import { useUser } from '@/5_entities/user/lib/hooks/useUser'
+import { useAppSelector } from '@/6_shared/model/hooks'
 import logo2 from '@/6_shared/public/_5ka.gif'
-import logo from '@/6_shared/public/95708730.jpeg'
 import { Container } from '@/6_shared/ui/continer'
 
 import classes from './classes.module.scss'
@@ -19,8 +19,6 @@ type Props = {}
 /// вынести в шадер
 
 const HomePage = (props: Props) => {
-  const { user } = useUser()
-  console.log(user)
 
   return (
     <Container>
@@ -30,7 +28,7 @@ const HomePage = (props: Props) => {
 
       <BalanceWidget />
       {/* баджы про бюджет */}
-      
+
       <BudgetWidgets />
 
       {/* лист покупок по дням  */}

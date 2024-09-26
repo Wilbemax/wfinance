@@ -1,9 +1,13 @@
 import path from 'path'
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+  // Отключение строгого режима
+  reactStrictMode: false,
+
   images: {
     domains: ['i.pinimg.com'], // Разрешите загрузку изображений с этого домена
   },
+
   webpack: (config, { isServer }) => {
     // Дополнительные настройки вебпака, если они нужны
     config.module.rules.push({

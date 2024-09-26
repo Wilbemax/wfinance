@@ -1,21 +1,25 @@
-import { useLayoutEffect, useState } from 'react'
-import { Typography } from 'antd'
-import { Plus, ShoppingBasket, SquarePlus } from 'lucide-react'
-import Link from 'next/link'
+'use client'
 
+import { useEffect, useLayoutEffect, useState } from 'react'
+import { BottomSheet } from 'react-spring-bottom-sheet'
+import { Button } from 'antd'
+
+import { Budgets } from '@/4_feature/Home/Budgets'
 import { useFetchBudgets } from '@/5_entities/user/lib/hooks/useFetchBudgets'
 import { useUser } from '@/5_entities/user/lib/hooks/useUser'
 import type { UserBudgets } from '@/5_entities/user/model/type'
-import { darkenColor } from '@/6_shared/lib/utils/darkenColor'
 
-import classes from './classes.module.scss'
+import 'react-spring-bottom-sheet/dist/style.css'
 
-type Props = {}
-
-const BudgetWidgets = (props: Props) => {
+const BudgetWidgets = () => {
   const { user } = useUser()
   const [budgets, setBudgets] = useState<UserBudgets | null>(null)
 
+  const [open, setOpen] = useState(false)
+
+  function onDismiss() {
+    setOpen(false)
+  }
   useLayoutEffect(() => {
     const fetchBudgets = async () => {
       if (user) {
@@ -30,7 +34,6 @@ const BudgetWidgets = (props: Props) => {
     }
     fetchBudgets()
   }, [user])
-  console.log(budgets)
 
   if (!budgets) {
     return null
@@ -38,60 +41,25 @@ const BudgetWidgets = (props: Props) => {
 
   return (
     <>
-      <Typography.Title level={5}>Бюджеты</Typography.Title>
-      <div className={classes.wrapper}>
-        {budgets.budgets.map((budget) => {
-          const dark = darkenColor(budget.color, 20)
-          const perCent = 100 - (budget.totalAmount / budget.maxExpenses) * 100
+      <Budgets budgets={budgets} setIsDrawerOpen={setOpen} />
+      <BottomSheet
+        open={open}
+        onDismiss={() => onDismiss()}
+        snapPoints={({ minHeight, maxHeight }) => maxHeight - minHeight}
+      >
+        <p>
+          Using onDismiss lets users close the sheet by swiping it down, tapping
+          on the backdrop or by hitting esc on their keyboard.
+        </p>
 
-          return (
-            <div className={classes.budgetWrapper}>
-              {/* Блок, который изменяет высоту в зависимости от процента */}
-              <div
-                className={classes.perCent}
-                style={{
-                  background: 'rgba(250, 250, 250, 0.4)',
-                  height: `${perCent}%`,
-                }}
-              />
+        <div className='bg-gray-200 block rounded-md h-10 w-full my-10' />
+        <p>The height adjustment is done automatically, it just works™!</p>
+        <div className='bg-gray-200 block rounded-md h-10 w-full my-10' />
 
-              {/* Основной блок для информации */}
-              <div
-                className={classes.budget}
-                style={{ background: `${budget.color}` }}
-              >
-                <div className={classes.icon} style={{ background: dark }}>
-                  <ShoppingBasket color='#fff' size={20} />
-                </div>
-                <div>
-                  <Typography.Title level={4} style={{ margin: 0, padding: 0 }}>
-                    {budget.totalAmount}₽
-                  </Typography.Title>
-                  <Typography.Text style={{ lineHeight: 0 }}>
-                    {budget.name}
-                  </Typography.Text>
-                </div>
-              </div>
-            </div>
-          )
-        })}
-        <Link href='/budgets' className={classes.budgetWrapper}>
-          {/* Основной блок для информации */}
-          <div className={classes.budget} style={{ background: `#7f7f7f` }}>
-            <div
-              className={classes.icon}
-              style={{ background: 'rgba(76, 76, 76, 0.5)' }}
-            >
-              <Plus color='#fff' size={20} />
-            </div>
-            <div>
-              <Typography.Text style={{ lineHeight: 0 }}>
-                Добавить новый
-              </Typography.Text>
-            </div>
-          </div>
-        </Link>
-      </div>
+        <Button className='w-full' onClick={() => onDismiss()}>
+          Dismiss
+        </Button>
+      </BottomSheet>
     </>
   )
 }
