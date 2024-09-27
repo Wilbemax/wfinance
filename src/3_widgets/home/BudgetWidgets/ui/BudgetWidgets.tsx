@@ -1,26 +1,31 @@
 'use client'
 
-import { useEffect, useLayoutEffect, useState } from 'react'
+import { useEffect, useState } from 'react'
 import { BottomSheet } from 'react-spring-bottom-sheet'
-import { Button } from 'antd'
+import { Button, Input, Typography } from 'antd'
 
 import { Budgets } from '@/4_feature/Home/Budgets'
+import { NewBudgetsSheet, SheetHeader } from '@/4_feature/Home/NewBudgetsSheet'
 import { useFetchBudgets } from '@/5_entities/user/lib/hooks/useFetchBudgets'
 import { useUser } from '@/5_entities/user/lib/hooks/useUser'
 import type { UserBudgets } from '@/5_entities/user/model/type'
+import { Container } from '@/6_shared/ui/continer'
+import { IconPicker } from '@/6_shared/ui/iconPicker'
 
 import 'react-spring-bottom-sheet/dist/style.css'
 
 const BudgetWidgets = () => {
   const { user } = useUser()
   const [budgets, setBudgets] = useState<UserBudgets | null>(null)
-
   const [open, setOpen] = useState(false)
-
+  const [isIconPeckerOpen, setIsIconPeckerOpen] = useState<boolean>(false)
+  const [icon, setIcon] = useState<React.JSX.Element | null>(null)
   function onDismiss() {
     setOpen(false)
+    setIcon(null)
   }
-  useLayoutEffect(() => {
+
+  useEffect(() => {
     const fetchBudgets = async () => {
       if (user) {
         // eslint-disable-next-line react-hooks/rules-of-hooks
@@ -35,10 +40,23 @@ const BudgetWidgets = () => {
     fetchBudgets()
   }, [user])
 
+  const openIconPecker = () => {
+    if (open) {
+      setOpen(false)
+      setIsIconPeckerOpen(true)
+    }
+  }
+  const closeIconPecker = () => {
+    if (isIconPeckerOpen) {
+      setIsIconPeckerOpen(false)
+      setOpen(true)
+    }
+  }
+
   if (!budgets) {
     return null
   }
-
+  // debugger
   return (
     <>
       <Budgets budgets={budgets} setIsDrawerOpen={setOpen} />
@@ -46,20 +64,20 @@ const BudgetWidgets = () => {
         open={open}
         onDismiss={() => onDismiss()}
         snapPoints={({ minHeight, maxHeight }) => maxHeight - minHeight}
+        header={<SheetHeader />}
       >
-        <p>
-          Using onDismiss lets users close the sheet by swiping it down, tapping
-          on the backdrop or by hitting esc on their keyboard.
-        </p>
-
-        <div className='bg-gray-200 block rounded-md h-10 w-full my-10' />
-        <p>The height adjustment is done automatically, it just works™!</p>
-        <div className='bg-gray-200 block rounded-md h-10 w-full my-10' />
-
-        <Button className='w-full' onClick={() => onDismiss()}>
-          Dismiss
-        </Button>
+        <NewBudgetsSheet
+          icon={icon}
+          setIsPeckerOpen={openIconPecker}
+          closePecker={closeIconPecker}
+          isIconPeckerOpen={isIconPeckerOpen}
+        />
       </BottomSheet>
+      <IconPicker
+        setIcon={setIcon}
+        onClose={closeIconPecker}
+        open={isIconPeckerOpen}
+      />
     </>
   )
 }
