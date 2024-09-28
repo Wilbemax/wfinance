@@ -78,7 +78,7 @@ const Balance = ({
             level={5}
             style={{ margin: 0, padding: 0, color: '#fff', gap: '.5rem' }}
           >
-            {income.toLocaleString('ru-RU')}₽ <MoveUpRight size={16} />
+            {income.toLocaleString('ru-RU')} ₽ <MoveUpRight size={16} />
           </Typography.Title>
           <Typography.Text style={{ lineHeight: 0, color: '#fff' }}>
             Доходы в {month}

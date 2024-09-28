@@ -1,45 +1,49 @@
 'use client'
 
 import React, { useState } from 'react'
-import { Button, Drawer, Input, Modal } from 'antd'
+import { Button, Modal } from 'antd'
 
 import { availableIcons } from '@/6_shared/lib/utils/iconPack'
+
+import classes from './clasess.module.scss'
 
 type Props = {
   open: boolean
   onClose: () => void
-  setIcon: (icon: React.JSX.Element) => void
+  setIcon: (icon: string) => void
 }
 
 const IconPicker = ({ open, onClose, setIcon }: Props) => {
-  const handleIconSelect = (icon: React.JSX.Element) => {
-    setIcon(icon)
+  const [middleIcon, setMiddleIcon] = useState<string>()
+
+  const onOk = () => {
+    if (middleIcon) {
+      setIcon(middleIcon)
+    }
     onClose()
+  }
+  const handleIconSelect = (icon: string) => {
+    setMiddleIcon(icon)
   }
 
   return (
     <Modal
       zIndex={23232}
-      title='Select an Icon'
+      title='Выберете иконку'
       open={open}
-      onClose={onClose} // Убедитесь, что используете onClose для закрытия
+      onCancel={onClose} // Убедитесь, что используете onClose для закрытия
+      onOk={onOk}
       width={400} // Задайте ширину, если нужно
     >
-      <div
-        style={{
-          display: 'flex',
-          gap: '10px',
-          flexDirection: 'column',
-        }}
-      >
-        {availableIcons.map((icon, index) => (
+      <div className={classes.wrapper}>
+        {availableIcons.map((icon) => (
           <Button
-            key={index}
+            className={classes.icon}
+            key={icon.name}
+            danger={icon.name === middleIcon}
             icon={icon.icon}
-            onClick={() => handleIconSelect(icon.icon)}
-          >
-            {icon.name}
-          </Button>
+            onClick={() => handleIconSelect(icon.name)}
+          />
         ))}
       </div>
     </Modal>

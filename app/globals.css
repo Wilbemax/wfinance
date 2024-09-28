@@ -77,7 +77,7 @@ body {
 
 [data-theme='light']:root {
   --rsbs-backdrop-bg: rgba(0, 0, 0, 0.6);
-  --rsbs-bg: #000000;
+  --rsbs-bg: #fefefe;
   --rsbs-handle-bg: hsla(0, 0%, 0%, 0.14);
   --rsbs-max-w: auto;
   --rsbs-ml: env(safe-area-inset-left);
@@ -85,3 +85,5 @@ body {
   --rsbs-overlay-rounded: 16px;
 }
 
+
+  

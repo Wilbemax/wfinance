@@ -4,6 +4,7 @@ import Link from 'next/link'
 
 import type { UserBudgets } from '@/5_entities/user/model/type'
 import { darkenColor } from '@/6_shared/lib/utils/darkenColor'
+import { availableIcons } from '@/6_shared/lib/utils/iconPack'
 
 import classes from './classes.module.scss'
 
@@ -38,11 +39,18 @@ const Budgets = ({ budgets, setIsDrawerOpen }: Props) => {
                 style={{ background: `${budget.color}` }}
               >
                 <div className={classes.icon} style={{ background: dark }}>
-                  <ShoppingBasket color='#fff' size={20} />
+                  {
+                    availableIcons.find(
+                      (availableIcon) => availableIcon.name === budget.icon
+                    )?.icon
+                  }
                 </div>
-                <div>
-                  <Typography.Title level={5} style={{ margin: 0, padding: 0 }}>
-                    {budget.totalAmount}₽
+                <div className={classes.text}>
+                  <Typography.Title
+                    level={5}
+                    style={{ margin: 0, padding: 0, zIndex: 23 }}
+                  >
+                    {budget.totalAmount.toLocaleString('RU-ru')} ₽
                   </Typography.Title>
 
                   <Typography.Text style={{ lineHeight: 0 }}>
