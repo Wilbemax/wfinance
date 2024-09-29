@@ -19,7 +19,6 @@ type Props = {}
 /// вынести в шадер
 
 const HomePage = (props: Props) => {
-
   return (
     <Container>
       <Typography.Title level={3}>Баланс</Typography.Title>

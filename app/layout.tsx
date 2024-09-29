@@ -3,6 +3,9 @@ import { Inter } from 'next/font/google'
 
 import { AppProvider } from '@/1_app/AppProvider'
 
+import 'swiper/css'
+import 'swiper/css/effect-cards'
+
 import './globals.css'
 import './normolize.css'
 

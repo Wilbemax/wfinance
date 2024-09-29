@@ -34,6 +34,7 @@
     "react-use-scroll-direction": "^0.1.0",
     "redux": "^5.0.1",
     "style-loader": "^4.0.0",
+    "swiper": "^11.1.14",
     "universal-cookie": "^7.2.0",
     "wfinance": "file:"
   },

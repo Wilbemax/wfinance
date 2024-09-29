@@ -38,6 +38,7 @@ const NewBudgetsSheetButton = ({
   return (
     <div className={classes.btnWrapper}>
       <Button
+        size='large'
         type='primary'
         disabled={!submittable}
         loading={loading}
@@ -46,6 +47,7 @@ const NewBudgetsSheetButton = ({
         Создать бюджет
       </Button>
       <Button
+        size='large'
         type={currentTheme === 'dark' ? 'primary' : 'default'}
         style={{ background: '#cccccc', color: '#23272e', width: '100%' }}
         onClick={onDismiss}

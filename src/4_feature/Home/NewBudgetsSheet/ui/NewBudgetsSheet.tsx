@@ -135,7 +135,7 @@ const NewBudgetsSheet = ({
 
         <Form.Item
           label='Выбеите цветовую схему'
-          // name='color'
+          name='color'
           rules={newBudgetColorRule(color)}
         >
           <ColorPicker

@@ -66,7 +66,7 @@ const Balance = ({
             level={5}
             style={{ margin: 0, padding: 0, color: '#fff', gap: '.5rem' }}
           >
-            {expenses.toLocaleString('ru-RU')} ₽ <MoveDownRight size={16} st />
+            {expenses.toLocaleString('ru-RU')} ₽ <MoveDownRight size={16}  />
           </Typography.Title>
           <Typography.Text style={{ lineHeight: 0, color: '#fff' }}>
             Расходы в {month}

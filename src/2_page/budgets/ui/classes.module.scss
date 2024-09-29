@@ -1,0 +1,41 @@
+.swiper {
+  width: 90%;
+  height: 400px;
+  margin: 1rem auto;
+}
+
+.budget {
+  padding: 1rem;
+  height: 140px;
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.topInf{
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+.spend{
+  text-align: end;
+  text-wrap: wrap;
+  max-width: 100px;
+}
+
+.name {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.icon {
+  color: #fff;
+  background: #0000006f;
+  width: 30px;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 5px;
+}
