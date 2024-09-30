@@ -1,3 +1,4 @@
+import React from 'react'
 import { Typography } from 'antd'
 import { Plus, ShoppingBasket } from 'lucide-react'
 import Link from 'next/link'
@@ -21,6 +22,7 @@ const Budgets = ({ budgets, setIsDrawerOpen }: Props) => {
         {budgets.budgets.map((budget) => {
           const dark = darkenColor(budget.color, 20)
           const perCent = 100 - (budget.totalAmount / budget.maxExpenses) * 100
+          console.log(perCent)
 
           return (
             <div className={classes.budgetWrapper} key={budget.name}>
