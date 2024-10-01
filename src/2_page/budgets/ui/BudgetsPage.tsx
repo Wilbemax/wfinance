@@ -8,10 +8,13 @@ import { Button, Drawer, Progress, Typography } from 'antd'
 import { EffectCards } from 'swiper/modules'
 import { Swiper, SwiperSlide } from 'swiper/react'
 
+import { BudgetDrawer } from '@/3_widgets/budget/BudgetDrawer'
+import { BudgetSwiper } from '@/4_feature/BudgetsSwiper'
 import { useFetchBudgets } from '@/5_entities/user/lib/hooks/useFetchBudgets'
 import { useUser } from '@/5_entities/user/lib/hooks/useUser'
 import type { BudgetItem, UserBudgets } from '@/5_entities/user/model/type'
 import { getDays } from '@/6_shared/lib/utils/getDays'
+import { getRoundedPercent } from '@/6_shared/lib/utils/getRoundedPercent'
 import { availableIcons } from '@/6_shared/lib/utils/iconPack'
 import { Container } from '@/6_shared/ui/continer'
 
@@ -62,17 +65,6 @@ const BudgetsPage = (props: Props) => {
     }
     fetchBudgets()
   }, [user])
-  console.log(daysLeft, daysPassed)
-
-  const colorBar: ProgressProps['strokeColor'] = {
-    '0%': '#01c850',
-    '50%': '#ffbb33',
-    '100%': '#fe4443',
-  }
-
-  const onClose = () => {
-    setOpenDrawer(false)
-  }
 
   return (
     <div style={{ overflowX: 'hidden' }}>
@@ -91,52 +83,12 @@ const BudgetsPage = (props: Props) => {
             {budgets &&
               budgets.budgets.map((budget) => (
                 <SwiperSlide
+                  key={budget.name}
                   onClick={() => setOpenDrawer(budget.name)}
                   className={classes.budget}
                   style={{ background: budget.color }}
                 >
-                  <div className={classes.left}>
-                    <div className={classes.topInf}>
-                      <div className={classes.name}>
-                        <div className={classes.icon}>
-                          {
-                            availableIcons.find(
-                              (icon) => icon.name === budget.icon
-                            )?.icon
-                          }
-                        </div>
-                        <Typography.Title
-                          level={4}
-                          style={{ margin: 0, padding: 0 }}
-                        >
-                          {budget.name}
-                        </Typography.Title>
-                      </div>
-                    </div>
-
-                    <Typography.Text>
-                      {budget.maxExpenses - budget.totalAmount < 0
-                        ? `Лимит уже превышен`
-                        : `Можно потратить: ${(budget.maxExpenses - budget.totalAmount).toLocaleString('RU-ru')} ₽`}
-                    </Typography.Text>
-                  </div>
-                  <div className={classes.right}>
-                    <Progress
-                      type='dashboard'
-                      percent={Math.round(
-                        (budget.totalAmount / budget.maxExpenses) * 100
-                      )}
-                      size={100}
-                      // strokeColor={colorBar}
-                      status={
-                        Math.round(
-                          (budget.totalAmount / budget.maxExpenses) * 100
-                        ) >= 100
-                          ? 'exception'
-                          : 'normal'
-                      }
-                    />
-                  </div>
+                  <BudgetSwiper budget={budget} />
                 </SwiperSlide>
               ))}
           </Swiper>
@@ -144,14 +96,14 @@ const BudgetsPage = (props: Props) => {
       </Container>
 
       <Drawer
-        title='Подробная информация'
+        // title='Подробная информация'
         footer={<CloseButton setDrawerClose={setOpenDrawer} />}
+        size='large'
         closable={false}
         open={Boolean(openDrawer)}
+        style={{ background: '#23272e', padding: 0 }}
       >
-        <Typography.Title level={3} style={{ margin: 0, padding: 0 }}>
-          {contentDrawer?.name}
-        </Typography.Title>
+        {contentDrawer && <BudgetDrawer contentDrawer={contentDrawer} />}
       </Drawer>
     </div>
   )

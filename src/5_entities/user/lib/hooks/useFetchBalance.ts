@@ -1,7 +1,7 @@
 import axios from 'axios'
 
 import { API_URL } from '@/6_shared/api/config'
-import { getMonthName } from '@/6_shared/lib/hooks/useGetMonth'
+import { getMonthName } from '@/6_shared/lib/utils/useGetMonth'
 
 import type { BalanceResponse } from '../../model/type'
 
