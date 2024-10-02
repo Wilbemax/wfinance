@@ -13,10 +13,18 @@ type Props = {
 }
 
 const BudgetSwiper = ({ budget }: Props) => {
-  const budgetPercent = getRoundedPercent(
-    budget.totalAmount,
-    budget.maxExpenses
+  const perMonth = budget.pereMonth.find(
+    (item) =>
+      item.month === new Date().getMonth() + 1 &&
+      item.year === new Date().getFullYear()
   )
+  if (!perMonth) return null
+  const budgetPercent = getRoundedPercent(
+    perMonth.totalAmount,
+    perMonth.maxExpense
+  )
+  console.log('budgetPercent', budgetPercent);
+  
   return (
     <>
       <div className={classes.left}>

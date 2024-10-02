@@ -70,3 +70,15 @@
 .budgetsList.open {
   max-height: 500px; /* Задайте максимальную высоту для раскрытия списка */
 }
+
+.chart{
+  // padding: 1rem;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 1rem;
+  height: 140px;
+  background-color: #1b263b;
+  border-radius: 8px;
+}

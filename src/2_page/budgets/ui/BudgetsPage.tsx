@@ -9,7 +9,8 @@ import { EffectCards } from 'swiper/modules'
 import { Swiper, SwiperSlide } from 'swiper/react'
 
 import { BudgetDrawer } from '@/3_widgets/budget/BudgetDrawer'
-import { BudgetSwiper } from '@/4_feature/BudgetsSwiper'
+import { BudgetStatistic } from '@/3_widgets/budget/BudgetDrawer/ui/BugetsStatistic'
+import { BudgetSwiper } from '@/4_feature/Budget/BudgetsSwiper'
 import { useFetchBudgets } from '@/5_entities/user/lib/hooks/useFetchBudgets'
 import { useUser } from '@/5_entities/user/lib/hooks/useUser'
 import type { BudgetItem, UserBudgets } from '@/5_entities/user/model/type'
@@ -80,6 +81,13 @@ const BudgetsPage = (props: Props) => {
             style={{ margin: 0, padding: 0 }}
             // onSlideChange={(swiper) => setActiveSlideIndex(swiper.activeIndex)}
           >
+            <SwiperSlide>
+              <div className={classes.chart}>
+                dfasdfdsfas
+                {/* Испаривить и убрать рендер от сюда */}
+                {budgets && <BudgetStatistic budget={budgets} />}
+              </div>
+            </SwiperSlide>
             {budgets &&
               budgets.budgets.map((budget) => (
                 <SwiperSlide
