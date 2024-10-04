@@ -22,7 +22,7 @@ const BudgetCard = ({ contentDrawer, thisPerMonth }: Props) => {
         <div className={classes.amount}>
           <Typography.Title
             level={3}
-            style={{ margin: 0, padding: 0, lineHeight: 1 }}
+            style={{ margin: 0, padding: 0, lineHeight: 1, color: '#fff' }}
           >
             {thisPerMonth
               ? (
@@ -31,7 +31,7 @@ const BudgetCard = ({ contentDrawer, thisPerMonth }: Props) => {
               : contentDrawer.maxExpenses.toLocaleString('RU-ru')}{' '}
             ₽
           </Typography.Title>
-          <Typography.Text>
+          <Typography.Text style={{ color: '#fff' }}>
             Осталось из{' '}
             {thisPerMonth
               ? thisPerMonth.maxExpense.toLocaleString('RU-ru')
@@ -40,7 +40,7 @@ const BudgetCard = ({ contentDrawer, thisPerMonth }: Props) => {
           </Typography.Text>
         </div>
         <div className={classes.inDay}>
-          <Typography.Text style={{ fontWeight: 500 }}>
+          <Typography.Text style={{ fontWeight: 500, color: '#fff' }}>
             {thisPerMonth && daysLeft !== 0
               ? Math.round(thisPerMonth.totalAmount / daysLeft).toLocaleString(
                   'RU-ru'
@@ -48,25 +48,31 @@ const BudgetCard = ({ contentDrawer, thisPerMonth }: Props) => {
               : '0'}
             ₽
           </Typography.Text>
-          <Typography.Text> / день</Typography.Text>
+          <Typography.Text style={{ color: '#fff' }}> / день</Typography.Text>
         </div>
       </div>
       <div className={classes.bottomInf}>
         <div className={classes.barInf}>
-          <Typography.Text style={{ margin: 0, padding: 0, lineHeight: 1 }}>
+          <Typography.Text
+            style={{ margin: 0, padding: 0, lineHeight: 1, color: '#fff' }}
+          >
             {getMonthNameDefault(thisPerMonth.month)}
           </Typography.Text>
           <div>
-            <Typography.Text style={{ margin: 0, padding: 0, lineHeight: 1 }}>
+            <Typography.Text
+              style={{ margin: 0, padding: 0, lineHeight: 1, color: '#fff' }}
+            >
               еще
             </Typography.Text>{' '}
             <Typography.Text
               strong
-              style={{ margin: 0, padding: 0, lineHeight: 1 }}
+              style={{ margin: 0, padding: 0, lineHeight: 1, color: '#fff' }}
             >
               {daysLeft}
             </Typography.Text>
-            <Typography.Text style={{ margin: 0, padding: 0, lineHeight: 1 }}>
+            <Typography.Text
+              style={{ margin: 0, padding: 0, lineHeight: 1, color: '#fff' }}
+            >
               {' '}
               дней
             </Typography.Text>

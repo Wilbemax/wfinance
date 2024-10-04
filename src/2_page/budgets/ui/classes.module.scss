@@ -1,6 +1,7 @@
-.overflow{
+.overflow {
   overflow-x: hidden;
 }
+
 .allBudgets {
   display: flex;
   flex-direction: column;
@@ -8,17 +9,29 @@
 }
 
 .swiper {
-  width: 90%;
+
+  width: 100%;
   height: 400px;
-  margin: 1rem auto;
+  margin: 0 auto;
   // overflow-x: ;
+}
+
+.drawer {
+  padding: 0;
+  background: #0b1524;
+}
+
+[data-theme='light'] .drawer {
+  background-color: #f1faee;
 }
 
 .budget {
   padding: 1rem;
   height: 140px;
+  width: 100%;
   border-radius: 8px;
   display: flex;
+
   // align-items: center;
   justify-content: space-between;
 }
@@ -56,7 +69,9 @@
   align-items: center;
   justify-content: center;
   border-radius: 5px;
-}.swiperContainer {
+}
+
+.swiperContainer {
   width: 100%;
   cursor: pointer;
 }
@@ -68,10 +83,11 @@
 }
 
 .budgetsList.open {
-  max-height: 500px; /* Задайте максимальную высоту для раскрытия списка */
+  max-height: 500px;
+  /* Задайте максимальную высоту для раскрытия списка */
 }
 
-.chart{
+.chart {
   // padding: 1rem;
   width: 100%;
   display: flex;
@@ -79,6 +95,42 @@
   justify-content: space-between;
   padding: 0 1rem;
   height: 140px;
-  background-color: #1b263b;
+  background-color: #457b9d;
   border-radius: 8px;
+}
+
+.statistic {
+  // background: #33363d;
+  border-radius: 10px;
+  margin-bottom: 1rem ;
+  padding: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.names {
+  flex-wrap: wrap;
+  width: 95%;
+  max-height: 130px;
+  max-width: 160px;
+  display: flex;
+  flex-direction: column;
+}
+
+.bg {
+  position: absolute;
+  z-index: -1;
+  width: 100%;
+  top: 0;
+  left: 0;
+  background-color: #1b263b;
+  height: 185px;
+  border-radius: 0 0 20px 20px;
+}
+
+
+[data-theme='light'] .bg {
+  background: #457b9d;
+
 }

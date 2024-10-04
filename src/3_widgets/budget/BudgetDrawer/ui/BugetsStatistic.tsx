@@ -40,21 +40,22 @@ const BudgetStatistic = ({ budget }: Props) => {
     }
   })
 
-  console.log('data: ', data);
-  
+  console.log('data: ', data)
+
   const config = {
     data,
     xField: 'name',
     yField: 'percent',
     maxAngle: 350,
-    radius: 2.2,
+    radius: 1.3,
     innerRadius: 0.2,
-    tooltip: {
-      items: ['percent'],
-    },
+    // tooltip: {
+    //   items: ['percent'],
+    // },
     legend: false,
     axis: {
-      y: true,
+      y: false,
+      x: false,
     },
     markBackground: {
       opacity: 0.25,
@@ -66,14 +67,17 @@ const BudgetStatistic = ({ budget }: Props) => {
     },
     style: {
       radius: 50,
-      fill: ({ color }: string) => {
+      fill: ({ color, percent }: { color: string; percent: number }) => {
+        if (percent === 100) {
+          return '#e63946'
+        }
         return color
       },
     },
     label: false,
   }
   return (
-    <div className={classes.bar}>
+    <div style={{ width: 123, height: 123 }}>
       <RadialBar {...config} />
     </div>
   )

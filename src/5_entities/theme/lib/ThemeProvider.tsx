@@ -65,6 +65,18 @@ const ThemeProvider = ({ children }: ThemeProviderProps) => {
     <ConfigProvider
       theme={{
         algorithm: t === 'dark' ? theme.darkAlgorithm : theme.defaultAlgorithm,
+        token: {
+          colorPrimary: '#29abe2',
+          colorError: '#e63946',
+
+        },
+        components: {
+          Progress: {
+            defaultColor: '#29abe2',
+            colorError: '#e63946',
+            circleTextColor: '#fff',
+          },
+        },
       }}
     >
       {children}

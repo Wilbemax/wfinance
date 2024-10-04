@@ -4,7 +4,7 @@ import type { Dispatch, SetStateAction } from 'react'
 import React, { useLayoutEffect, useState } from 'react'
 import { useDispatch } from 'react-redux'
 import type { ProgressProps } from 'antd'
-import { Button, Drawer, Progress, Typography } from 'antd'
+import { Badge, Button, Drawer, Progress, Typography } from 'antd'
 import { EffectCards } from 'swiper/modules'
 import { Swiper, SwiperSlide } from 'swiper/react'
 
@@ -67,11 +67,72 @@ const BudgetsPage = (props: Props) => {
     fetchBudgets()
   }, [user])
 
+  const data: (
+    | {
+        name: string
+        percent: number
+        color: string
+      }
+    | undefined
+  )[] = budgets?.budgets.map((budget) => {
+    const perMonth = budget.pereMonth.find(
+      (item) =>
+        item.month === new Date().getMonth() + 1 &&
+        item.year === new Date().getFullYear()
+    )
+
+    if (perMonth) {
+      return {
+        name: budget.name,
+        percent: getRoundedPercent(perMonth.totalAmount, perMonth.maxExpense),
+        color: budget.color,
+      }
+    }
+  })
+
   return (
     <div style={{ overflowX: 'hidden' }}>
+      <div className={classes.bg} />
       <Container>
-        <Typography.Title level={3} style={{ margin: 0, padding: 0 }}>
+        <Typography.Title
+          level={3}
+          style={{ margin: 0, padding: 0, color: '#fff' }}
+        >
           Бюджеты
+        </Typography.Title>
+        <div className={classes.statistic}>
+          <div className={classes.names}>
+            {data?.map((budget) => {
+              if (budget) {
+                return (
+                  <Typography.Text
+                    delete={budget.percent >= 100}
+                    type={budget.percent >= 100 ? 'danger' : undefined}
+
+                    style={{
+                      display: 'flex',
+                      fontSize: 15,
+                      fontWeight: 400,
+                      color: `${budget.percent >= 100 ? undefined : '#fff'}`,
+                    }}
+                    key={budget.name}
+                  >
+                    <Badge
+                      size='default'
+                      color={budget.color}
+                      style={{ marginRight: 10 }}
+                    />{' '}
+                    {budget.name}
+                  </Typography.Text>
+                )
+              }
+              return null
+            })}
+          </div>
+          <div>{budgets && <BudgetStatistic budget={budgets} />}</div>
+        </div>
+        <Typography.Title level={5} style={{ margin: '.5rem 0', padding: 0 }}>
+          Посмотрите подробнее
         </Typography.Title>
         <div className={classes.swiper}>
           <Swiper
@@ -81,13 +142,6 @@ const BudgetsPage = (props: Props) => {
             style={{ margin: 0, padding: 0 }}
             // onSlideChange={(swiper) => setActiveSlideIndex(swiper.activeIndex)}
           >
-            <SwiperSlide>
-              <div className={classes.chart}>
-                dfasdfdsfas
-                {/* Испаривить и убрать рендер от сюда */}
-                {budgets && <BudgetStatistic budget={budgets} />}
-              </div>
-            </SwiperSlide>
             {budgets &&
               budgets.budgets.map((budget) => (
                 <SwiperSlide

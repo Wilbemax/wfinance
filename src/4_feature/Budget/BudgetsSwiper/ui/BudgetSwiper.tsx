@@ -23,8 +23,8 @@ const BudgetSwiper = ({ budget }: Props) => {
     perMonth.totalAmount,
     perMonth.maxExpense
   )
-  console.log('budgetPercent', budgetPercent);
-  
+  console.log('budgetPercent', budgetPercent)
+
   return (
     <>
       <div className={classes.left}>
@@ -33,13 +33,16 @@ const BudgetSwiper = ({ budget }: Props) => {
             <div className={classes.icon}>
               {availableIcons.find((icon) => icon.name === budget.icon)?.icon}
             </div>
-            <Typography.Title level={4} style={{ margin: 0, padding: 0 }}>
+            <Typography.Title
+              level={4}
+              style={{ margin: 0, padding: 0, color: '#fff' }}
+            >
               {budget.name}
             </Typography.Title>
           </div>
         </div>
 
-        <Typography.Text>
+        <Typography.Text style={{ color: '#fff' }}>
           {budget.maxExpenses - budget.totalAmount < 0
             ? `Лимит уже превышен`
             : `Можно потратить: ${(budget.maxExpenses - budget.totalAmount).toLocaleString('RU-ru')} ₽`}
@@ -51,6 +54,7 @@ const BudgetSwiper = ({ budget }: Props) => {
           percent={budgetPercent}
           size={100}
           // strokeColor={colorBar}
+            
           status={budgetPercent >= 100 ? 'exception' : 'normal'}
         />
       </div>

@@ -50,12 +50,12 @@ const Budgets = ({ budgets, setIsDrawerOpen }: Props) => {
                 <div className={classes.text}>
                   <Typography.Title
                     level={5}
-                    style={{ margin: 0, padding: 0, zIndex: 23 }}
+                    style={{ margin: 0, padding: 0, zIndex: 23, color: '#fff' }}
                   >
                     {budget.totalAmount.toLocaleString('RU-ru')} ₽
                   </Typography.Title>
 
-                  <Typography.Text style={{ lineHeight: 0 }}>
+                  <Typography.Text style={{ lineHeight: 0, color: '#fff' }}>
                     {budget.name}
                   </Typography.Text>
                 </div>

@@ -23,14 +23,17 @@ const BudgetDrawer = ({ contentDrawer }: Props) => {
       <div className={classes.name}>
         <div
           className={classes.icon}
-          style={{ background: contentDrawer.color }}
+          style={{ background: contentDrawer.color, color: '#fff' }}
         >
           {
             availableIcons.find((icon) => icon.name === contentDrawer.icon)
               ?.icon
           }
         </div>
-        <Typography.Title level={4} style={{ margin: 0, padding: 0 }}>
+        <Typography.Title
+          level={4}
+          style={{ margin: 0, padding: 0, color: '#fff' }}
+        >
           {contentDrawer.name}
         </Typography.Title>
       </div>
