@@ -1,7 +1,6 @@
 import React from 'react'
 import { Typography } from 'antd'
-import { Plus, ShoppingBasket } from 'lucide-react'
-import Link from 'next/link'
+import { Plus } from 'lucide-react'
 
 import type { UserBudgets } from '@/5_entities/user/model/type'
 import { darkenColor } from '@/6_shared/lib/utils/darkenColor'
@@ -11,10 +10,10 @@ import classes from './classes.module.scss'
 
 type Props = {
   budgets: UserBudgets
-  setIsDrawerOpen: (arg0: boolean) => void
+  setIsSheetOpen: (arg0: boolean) => void
 }
 
-const Budgets = ({ budgets, setIsDrawerOpen }: Props) => {
+const Budgets = ({ budgets, setIsSheetOpen }: Props) => {
   return (
     <>
       <Typography.Title level={5}>Бюджеты</Typography.Title>
@@ -22,7 +21,6 @@ const Budgets = ({ budgets, setIsDrawerOpen }: Props) => {
         {budgets.budgets.map((budget) => {
           const dark = darkenColor(budget.color, 20)
           const perCent = 100 - (budget.totalAmount / budget.maxExpenses) * 100
-          console.log(perCent)
 
           return (
             <div className={classes.budgetWrapper} key={budget.name}>
@@ -65,7 +63,7 @@ const Budgets = ({ budgets, setIsDrawerOpen }: Props) => {
         })}
         <button
           type='button'
-          onClick={() => setIsDrawerOpen(true)}
+          onClick={() => setIsSheetOpen(true)}
           className={classes.budgetWrapper}
         >
           {/* Основной блок для информации */}

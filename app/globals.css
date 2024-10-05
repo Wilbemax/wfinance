@@ -68,8 +68,8 @@ body {
 
 [data-theme='dark']:root {
   --rsbs-backdrop-bg: rgba(0, 0, 0, 0.6);
-  --rsbs-bg: #404754;
-  --rsbs-handle-bg: hsla(0, 0%, 0%, 0.14);
+  --rsbs-bg: #0b1524;
+  --rsbs-handle-bg: #f1faee;
   --rsbs-max-w: auto;
   --rsbs-ml: env(safe-area-inset-left);
   --rsbs-mr: env(safe-area-inset-right);
@@ -78,7 +78,7 @@ body {
 
 [data-theme='light']:root {
   --rsbs-backdrop-bg: rgba(0, 0, 0, 0.6);
-  --rsbs-bg: #fefefe;
+  --rsbs-bg: #f1faee;
   --rsbs-handle-bg: hsla(0, 0%, 0%, 0.14);
   --rsbs-max-w: auto;
   --rsbs-ml: env(safe-area-inset-left);

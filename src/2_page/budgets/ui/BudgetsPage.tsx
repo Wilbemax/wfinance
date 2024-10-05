@@ -2,27 +2,26 @@
 
 import type { Dispatch, SetStateAction } from 'react'
 import React, { useLayoutEffect, useState } from 'react'
-import { useDispatch } from 'react-redux'
-import type { ProgressProps } from 'antd'
-import { Badge, Button, Drawer, FloatButton, Progress, Typography } from 'antd'
+import { Badge, Button, Drawer, Typography } from 'antd'
 import { Plus } from 'lucide-react'
 import { EffectCards } from 'swiper/modules'
 import { Swiper, SwiperSlide } from 'swiper/react'
 
 import { BudgetDrawer } from '@/3_widgets/budget/BudgetDrawer'
 import { BudgetStatistic } from '@/3_widgets/budget/BudgetDrawer/ui/BugetsStatistic'
+import { NewBudgetSheet } from '@/3_widgets/budget/NewBudgetSheet'
 import { BudgetSwiper } from '@/4_feature/Budget/BudgetsSwiper'
+import type { ThemeType } from '@/5_entities/theme/model/type'
 import { useFetchBudgets } from '@/5_entities/user/lib/hooks/useFetchBudgets'
 import { useUser } from '@/5_entities/user/lib/hooks/useUser'
 import type { BudgetItem, UserBudgets } from '@/5_entities/user/model/type'
-import { getDays } from '@/6_shared/lib/utils/getDays'
 import { getRoundedPercent } from '@/6_shared/lib/utils/getRoundedPercent'
-import { availableIcons } from '@/6_shared/lib/utils/iconPack'
+import { useAppSelector } from '@/6_shared/model/hooks'
 import { Container } from '@/6_shared/ui/continer'
 
 import classes from './classes.module.scss'
 
-type Props = {}
+// type Props = {}
 
 type CloseButtonProps = {
   setDrawerClose: Dispatch<SetStateAction<string | false>>
@@ -41,12 +40,16 @@ export const CloseButton = ({
   </Button>
 )
 
-const BudgetsPage = (props: Props) => {
-  const dispatch = useDispatch()
+const BudgetsPage = () => {
+  // const dispatch = useDispatch()
   const { user } = useUser()
   const [openDrawer, setOpenDrawer] = useState<string | false>(false)
+  const [isSheetOpen, setIsSheetOpen] = useState<boolean>(false)
+  const currentTheme = useAppSelector(
+    (state) => state.theme.currentTheme
+  ) as ThemeType
 
-  const { daysPassed, daysLeft } = getDays()
+  // const { daysPassed, daysLeft } = getDays()
   const [budgets, setBudgets] = useState<UserBudgets | null>(null)
 
   const contentDrawer: BudgetItem | undefined = openDrawer
@@ -89,6 +92,7 @@ const BudgetsPage = (props: Props) => {
         color: budget.color,
       }
     }
+    return null
   })
 
   return (
@@ -165,10 +169,18 @@ const BudgetsPage = (props: Props) => {
           }}
           type='primary'
           className={classes.floatButton}
+          onClick={() => setIsSheetOpen(true)}
         >
           <Plus size={20} />
         </Button>
       </div>
+
+      <NewBudgetSheet
+        budgets={budgets}
+        setIsSheetOpen={setIsSheetOpen}
+        isSheetOpen={isSheetOpen}
+        setBudgets={setBudgets}
+      />
 
       <Drawer
         // title='Подробная информация'
@@ -176,7 +188,11 @@ const BudgetsPage = (props: Props) => {
         size='large'
         closable={false}
         open={Boolean(openDrawer)}
-        style={{ background: '#1b263b', padding: 0 }}
+        className={classes.drawer}
+        style={{
+          background: `${currentTheme === 'dark' ? '#0b1524' : '#f1faee'}`,
+          padding: 0,
+        }}
       >
         {contentDrawer && <BudgetDrawer contentDrawer={contentDrawer} />}
       </Drawer>

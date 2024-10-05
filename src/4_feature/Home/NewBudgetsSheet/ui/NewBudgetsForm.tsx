@@ -1,24 +1,17 @@
+// eslint-disable-next-line eslint-comments/disable-enable-pair
+/* eslint-disable no-useless-escape */
+
 'use client'
 
-import React, { useEffect, useMemo, useState } from 'react'
-import type {
-  ColorPickerProps,
-  FormInstance,
-  GetProp,
-  InputNumberProps,
-} from 'antd'
+import React, { useState } from 'react'
+import type { FormInstance } from 'antd'
 import { Button, ColorPicker, Form, Input, InputNumber } from 'antd'
 import type { AggregationColor } from 'antd/es/color-picker/color'
-import { Ban, GalleryVerticalEnd } from 'lucide-react'
+import { Ban } from 'lucide-react'
 
 import { setCurrentTheme } from '@/5_entities/theme/model/slice'
-import {
-  determineColorShade,
-  getHueName,
-} from '@/6_shared/lib/utils/getHueName'
 import { availableIcons } from '@/6_shared/lib/utils/iconPack'
 import { useAppSelector } from '@/6_shared/model/hooks'
-import { IconPicker } from '@/6_shared/ui/iconPicker'
 
 import {
   newBudgetColorRule,
@@ -31,38 +24,53 @@ import { NewBudgetsSheetButton } from './NewBudgetsSheetButton'
 
 import classes from './classes.module.scss'
 
-type Color = Extract<
-  GetProp<ColorPickerProps, 'value'>,
-  string | { cleared: any }
->
-
 type Props = {
-  loading: boolean
-  budgetsName: string[] | undefined
-  setIsPeckerOpen: () => void
-  icon: string | null
-  onDismiss: () => void
   form: FormInstance<any>
+
+  icon: string | null
   color: string
+
+  // setIsIconPeckerOpen: (open: boolean) => void
+
   setColor: (hex: string) => void
-  setMaxExpense: (amount: number) => void
+  setMaxExpense: (val: number) => void
+  setNewName: (val: string) => void
+  setIcon: (val: string | null) => void
+
+  openIconPecker: () => void
+  setIsSheetOpen: (open: boolean) => void
+  budgetsName: string[]
+
+  onDismiss: () => void
   submit: () => void
-  setNewName: (name: string) => void
 }
 
-const NewBudgetsSheet = ({
-  loading,
+const NewBudgetsForm = ({
   form,
-  color,
   budgetsName,
   icon,
-  setNewName,
-  setIsPeckerOpen,
+  color,
+
+  openIconPecker,
   setColor,
-  onDismiss,
   setMaxExpense,
+  setNewName,
+
+  onDismiss,
   submit,
 }: Props) => {
+  const [loading, setLoading] = useState<boolean>(false)
+
+  const handleSubmit = () => {
+    try {
+      setLoading(true)
+      submit()
+      setLoading(false)
+    } catch (e) {
+      console.error(e)
+    }
+  }
+
   const currentTheme = useAppSelector(setCurrentTheme)
 
   const stringColor = (hex: AggregationColor) => hex.toHexString()
@@ -124,7 +132,7 @@ const NewBudgetsSheet = ({
             </div>
             <Button
               type='primary'
-              onClick={setIsPeckerOpen} // Открыть пикер иконок
+              onClick={openIconPecker} // Открыть пикер иконок
               className={classes.button}
             >
               {/* Отобразить выбранную иконку или текст, если иконка не выбрана */}
@@ -142,7 +150,6 @@ const NewBudgetsSheet = ({
             onChange={(col) => onColorChange(col)}
             defaultValue='#1677ff'
             size='large'
-            showText
           />
         </Form.Item>
 
@@ -150,7 +157,7 @@ const NewBudgetsSheet = ({
           <NewBudgetsSheetButton
             loading={loading}
             onDismiss={onDismiss}
-            submit={submit}
+            submit={handleSubmit}
             currentTheme={currentTheme}
             form={form}
           />
@@ -161,4 +168,4 @@ const NewBudgetsSheet = ({
   )
 }
 
-export { NewBudgetsSheet }
+export { NewBudgetsForm }

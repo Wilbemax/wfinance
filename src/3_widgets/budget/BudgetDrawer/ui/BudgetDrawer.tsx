@@ -5,8 +5,6 @@ import { BudgetCard } from '@/4_feature/Budget/Budgetdrawer'
 import type { BudgetItem } from '@/5_entities/user/model/type'
 import { availableIcons } from '@/6_shared/lib/utils/iconPack'
 
-import BudgetStatistic from './BugetsStatistic'
-
 import classes from './classes.module.scss'
 
 type Props = { contentDrawer: BudgetItem }
@@ -30,10 +28,7 @@ const BudgetDrawer = ({ contentDrawer }: Props) => {
               ?.icon
           }
         </div>
-        <Typography.Title
-          level={4}
-          style={{ margin: 0, padding: 0, color: '#fff' }}
-        >
+        <Typography.Title level={4} style={{ margin: 0, padding: 0 }}>
           {contentDrawer.name}
         </Typography.Title>
       </div>

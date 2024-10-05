@@ -1,8 +1,7 @@
 'use client'
 
 import { useEffect, useState } from 'react'
-import { Button, Form, type FormInstance } from 'antd'
-import type { FormContextProps } from 'antd/es/form/context'
+import { Button, type FormInstance } from 'antd'
 
 import classes from './classes.module.scss'
 
@@ -24,15 +23,12 @@ const NewBudgetsSheetButton = ({
   const [submittable, setSubmittable] = useState<boolean>(false)
 
   // Watch all values
-  const values = Form.useWatch<FormContextProps>([], form)
-  console.log(values)
 
   useEffect(() => {
     form
       .validateFields()
       .then(() => setSubmittable(true))
       .catch(() => setSubmittable(false))
-    console.log('dfasdf')
   }, [form])
 
   return (

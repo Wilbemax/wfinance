@@ -28,7 +28,9 @@ const BudgetCard = ({ contentDrawer, thisPerMonth }: Props) => {
               >
                 Бюджет исчерпан
               </Typography.Title>
-              <Typography.Text>Превышен на </Typography.Text>
+              <Typography.Text style={{ color: '#fff ' }}>
+                Превышен на{' '}
+              </Typography.Text>
               <Typography.Text type='danger'>
                 <b>
                   {Math.abs(
@@ -67,7 +69,7 @@ const BudgetCard = ({ contentDrawer, thisPerMonth }: Props) => {
               ? Math.round(thisPerMonth.totalAmount / daysLeft).toLocaleString(
                   'RU-ru'
                 )
-              : '0'}
+              : '0'}{' '}
             ₽
           </Typography.Text>
           <Typography.Text style={{ color: '#fff' }}> / день</Typography.Text>
