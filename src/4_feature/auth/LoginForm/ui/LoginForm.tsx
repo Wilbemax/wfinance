@@ -33,15 +33,15 @@ const LoginForm = ({ form, func, data }: Props) => {
       <Form.Item name='login' label='Логин' rules={loginRule}>
         <Input
           size='large'
-          prefix={<UserOutlined className='site-form-item-icon' />}
-          placeholder=' Номер телефона / почта'
+          prefix={<UserOutlined />}
+          placeholder='Номер телефона / почта'
           onChange={(e) => func.setLogin(e.target.value)}
         />
       </Form.Item>
       <Form.Item name='password' label='Пароль' rules={passwordRule}>
         <Input.Password
           size='large'
-          prefix={<LockOutlined className='site-form-item-icon' />}
+          prefix={<LockOutlined />}
           placeholder='Пароль'
           onChange={(e) => func.setPassword(e.target.value)}
         />

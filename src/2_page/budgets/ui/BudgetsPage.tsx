@@ -4,7 +4,8 @@ import type { Dispatch, SetStateAction } from 'react'
 import React, { useLayoutEffect, useState } from 'react'
 import { useDispatch } from 'react-redux'
 import type { ProgressProps } from 'antd'
-import { Badge, Button, Drawer, Progress, Typography } from 'antd'
+import { Badge, Button, Drawer, FloatButton, Progress, Typography } from 'antd'
+import { Plus } from 'lucide-react'
 import { EffectCards } from 'swiper/modules'
 import { Swiper, SwiperSlide } from 'swiper/react'
 
@@ -91,7 +92,7 @@ const BudgetsPage = (props: Props) => {
   })
 
   return (
-    <div style={{ overflowX: 'hidden' }}>
+    <div style={{ overflowX: 'hidden', position: 'relative' }}>
       <div className={classes.bg} />
       <Container>
         <Typography.Title
@@ -108,11 +109,10 @@ const BudgetsPage = (props: Props) => {
                   <Typography.Text
                     delete={budget.percent >= 100}
                     type={budget.percent >= 100 ? 'danger' : undefined}
-
                     style={{
                       display: 'flex',
                       fontSize: 15,
-                      fontWeight: 400,
+
                       color: `${budget.percent >= 100 ? undefined : '#fff'}`,
                     }}
                     key={budget.name}
@@ -156,6 +156,19 @@ const BudgetsPage = (props: Props) => {
           </Swiper>
         </div>
       </Container>
+      <div className={classes.float}>
+        <Button
+          style={{
+            width: 50,
+            height: 50,
+            borderRadius: '50%',
+          }}
+          type='primary'
+          className={classes.floatButton}
+        >
+          <Plus size={20} />
+        </Button>
+      </div>
 
       <Drawer
         // title='Подробная информация'
@@ -163,7 +176,7 @@ const BudgetsPage = (props: Props) => {
         size='large'
         closable={false}
         open={Boolean(openDrawer)}
-        style={{ background: '#23272e', padding: 0 }}
+        style={{ background: '#1b263b', padding: 0 }}
       >
         {contentDrawer && <BudgetDrawer contentDrawer={contentDrawer} />}
       </Drawer>
