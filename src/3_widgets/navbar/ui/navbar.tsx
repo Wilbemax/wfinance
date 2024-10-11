@@ -9,9 +9,7 @@ import { usePathname } from 'next/navigation'
 
 import classes from './classes.module.scss'
 
-type Props = {}
-
-const Navbar = (props: Props) => {
+const Navbar = () => {
   const { isScrollingUp, isScrollingDown } = useScrollDirection()
   const [isVisible, setIsVisible] = useState<boolean>(false)
   const pathname = usePathname()
@@ -34,7 +32,6 @@ const Navbar = (props: Props) => {
   }, [])
 
   const isActive = (path: string) => pathname === path
-  console.log(pathname === '/')
 
   return (
     <div className={cx(classes.navbar, { [classes.visible]: isVisible })}>
@@ -55,9 +52,9 @@ const Navbar = (props: Props) => {
         <CreditCard />
       </Link>
       <Link
-        href='/plus'
+        href='/add-new'
         className={cx(classes.icon, classes.plus, {
-          [classes.activeIcon]: isActive('/plus'),
+          [classes.activeIconAdd]: isActive('/add-new'),
         })}
       >
         <Plus />

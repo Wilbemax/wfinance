@@ -2,8 +2,9 @@ import React from 'react'
 import { Typography } from 'antd'
 import { Plus } from 'lucide-react'
 
-import type { UserBudgets } from '@/5_entities/user/model/type'
+import type { PereMonth, UserBudgets } from '@/5_entities/user/model/type'
 import { darkenColor } from '@/6_shared/lib/utils/darkenColor'
+import { getRoundedPercent } from '@/6_shared/lib/utils/getRoundedPercent'
 import { availableIcons } from '@/6_shared/lib/utils/iconPack'
 
 import classes from './classes.module.scss'
@@ -19,8 +20,18 @@ const Budgets = ({ budgets, setIsSheetOpen }: Props) => {
       <Typography.Title level={5}>Бюджеты</Typography.Title>
       <div className={classes.wrapper}>
         {budgets.budgets.map((budget) => {
+          const data: PereMonth | undefined = budget.pereMonth.find(
+            (item) =>
+              item.month === new Date().getMonth() + 1 &&
+              item.year === new Date().getFullYear()
+          )
+          if (!data) {
+            return null
+          }
+
           const dark = darkenColor(budget.color, 20)
-          const perCent = 100 - (budget.totalAmount / budget.maxExpenses) * 100
+          const perCent =
+            100 - getRoundedPercent(data.totalAmount, data.maxExpense)
 
           return (
             <div className={classes.budgetWrapper} key={budget.name}>
@@ -50,7 +61,7 @@ const Budgets = ({ budgets, setIsSheetOpen }: Props) => {
                     level={5}
                     style={{ margin: 0, padding: 0, zIndex: 23, color: '#fff' }}
                   >
-                    {budget.totalAmount.toLocaleString('RU-ru')} ₽
+                    {data.totalAmount.toLocaleString('RU-ru')} ₽
                   </Typography.Title>
 
                   <Typography.Text style={{ lineHeight: 0, color: '#fff' }}>
