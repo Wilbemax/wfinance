@@ -1,21 +1,15 @@
 'use client'
 
-import { useEffect } from 'react'
-import { useDispatch } from 'react-redux'
 import { useTypewriter } from 'react-simple-typewriter'
 import { Typography } from 'antd'
 import Lottie from 'lottie-react'
 
 import { DirectButton } from '@/4_feature/DirectButton'
-import { removeLoading } from '@/5_entities/app/model/slice'
 import duck from '@/6_shared/public/_056_ADDCARD_OUT.json'
 
 import classes from './page.module.scss'
 
 const WelcomePage = () => {
-  const dispatch = useDispatch()
-  
-
   // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment, @typescript-eslint/no-unsafe-call
   const [text] = useTypewriter({
     words: [

@@ -69,8 +69,8 @@ const NewBudgetSheet = ({
   }
 
   const handleIconSelect = (selectedIcon: string) => {
-    setIcon(selectedIcon) // Убедитесь, что здесь вы устанавливаете правильное значение
-    form.setFieldsValue({ icon: selectedIcon }) // Обновление значения в форме
+    setIcon(selectedIcon)
+    form.setFieldsValue({ icon: selectedIcon })
   }
 
   const openIconPecker = () => {

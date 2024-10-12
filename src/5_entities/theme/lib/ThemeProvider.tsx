@@ -68,13 +68,20 @@ const ThemeProvider = ({ children }: ThemeProviderProps) => {
         token: {
           colorPrimary: '#29abe2',
           colorError: '#e63946',
-
         },
         components: {
           Progress: {
             defaultColor: '#29abe2',
             colorError: '#e63946',
             circleTextColor: '#fff',
+          },
+          Drawer: {
+            padding: 0,
+            paddingLG: 0,
+          },
+          Segmented: {
+            trackBg: t === 'dark' ? '#1d3557' : '#f5f5f5',
+            itemSelectedBg: t === 'dark' ? '#457b9d' : '#fff',
           },
         },
       }}

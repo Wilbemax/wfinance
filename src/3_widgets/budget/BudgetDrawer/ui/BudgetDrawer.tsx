@@ -17,7 +17,7 @@ const BudgetDrawer = ({ contentDrawer }: Props) => {
   )
 
   return (
-    <>
+    <div className={classes.drawer}>
       <div className={classes.name}>
         <div
           className={classes.icon}
@@ -35,7 +35,7 @@ const BudgetDrawer = ({ contentDrawer }: Props) => {
       {thisPerMonth && (
         <BudgetCard contentDrawer={contentDrawer} thisPerMonth={thisPerMonth} />
       )}
-    </>
+    </div>
   )
 }
 

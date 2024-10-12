@@ -184,7 +184,11 @@ const BudgetsPage = () => {
 
       <Drawer
         // title='Подробная информация'
-        footer={<CloseButton setDrawerClose={setOpenDrawer} />}
+        footer={
+          <div style={{ width: '94%', margin: '0 auto' }}>
+            <CloseButton setDrawerClose={setOpenDrawer} />{' '}
+          </div>
+        }
         size='large'
         closable={false}
         open={Boolean(openDrawer)}
